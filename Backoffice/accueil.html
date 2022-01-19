@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="affectation.css">
+
+  <title>Accueil</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="app" ng-controller="Main as main">
+   <nav>
+    <button ng-click="main.getUser()" >affiche user</button>
+      <a href="#">{{main.user}}</a>
+      <a href="#">Affectation</a>
+      <a href="#">Statistique</a>
+  
+  <div id="indicator"></div>
+</nav>
+<div class="container">
+  <div class="card" style="float: left;width: 20%;margin-top: 130px;">
+    <div class="header">
+      <h3>Menu<i class="fas fa-angle-down iconM"></i></h3>
+    </div>
+    <div class="body">
+      <ul>
+        <li><i class="fas fa-home icon"></i> Accueil</li>
+        <li><i class="fas fa-underline icon"></i> Liste de signalement</li>
+        <li><i class="fas fa-boxes icon"></i> Affecation</li>
+        <li><i class="fas fa-table icon"></i> Vue ensemble</li>
+        <li><i class="fas fa-table icon"></i> Rapport</li>
+        <li style="background:white;color: #0F0F0F; border-top:10px solid lightgrey;"><i class="fas fa-table icon"></i> Deconnexion</li>
+        
+    </div>
+  </div>
+   
+</div>
+<div class="card" style="float: right;width:75%;background: #ffff;height: 100vh;padding: 20px;">
+    <h2>Responsive Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+            <th>Header 3</th>
+            <th>Header 4</th>
+            <th>Header 5</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+            <td>Content 1</td>
+        </tr>
+        <tr>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+            <td>Content 2</td>
+        </tr>
+        <tr>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+            <td>Content 3</td>
+        </tr>
+        <tr>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+            <td>Content 4</td>
+        </tr>
+        <tr>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+            <td>Content 5</td>
+        </tr>
+        <tr>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+            <td>Content 6</td>
+        </tr>
+        <tr>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+            <td>Content 7</td>
+        </tr>
+        <tr>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+            <td>Content 8</td>
+        </tr>
+        <tr>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+            <td>Content 9</td>
+        </tr>
+        <tr>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+            <td>Content 10</td>
+        </tr>
+        <tbody>
+    </table>
+
+   </div>
+  </body>
+</html>
