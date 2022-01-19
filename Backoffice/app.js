@@ -1,4 +1,4 @@
-;(function(){
+(function(){
 function authInterceptor(API, auth,$window) 
 {
   return {
@@ -12,6 +12,11 @@ function authInterceptor(API, auth,$window)
     },
     response: function(res) 
     {
+      /*if(res.config.url.indexOf(API) === 0 && res.data.accessToken)
+      {
+        auth.saveToken(res.data.accessToken)
+      }*/
+      
       if(res.status == 401)
       {
         $window.location.href = 'login.html'
@@ -53,15 +58,27 @@ function userService($http, API)
 
   self.register = function(username,password,nom,prenom) 
   {
-    return $http.post('http://localhost:8072/api/auth/signup',{username: username,password: password,nom: nom,prenom: prenom})
+    return $http.post(API + '/auth/signup',{username: username,password: password,nom: nom,prenom: prenom})
   }
 
   self.login = function(username, password) 
   {
-    return $http.post('http://localhost:8072/api/auth/signin', {username: username,password: password})
+    return $http.post(API + '/auth/signin', {username: username,password: password})
   };
-}
+  
 
+  self.getNbSignalementParType = function() 
+  {
+    // return $http.get(API + '/rechercherSignalement/getNbSignalementParType')
+    return $http.get("http://localhost:8072/rechercherSignalement/getNbSignalementParType")
+  };
+
+
+  //self.getAllEmployees = function()
+  //{
+     //return $http.get("http://localhost:8072/api/v1/employees")
+  //}
+}
 
 function MainCtrl(user, auth,$window) 
 {
@@ -96,6 +113,20 @@ function MainCtrl(user, auth,$window)
       })
     }
 
+      user.getNbSignalementParType().then(function(res)
+      {
+          // $window.location.href = 'accueil.html';
+          console.log(res.data);
+      })
+
+   /* self.getAllEmployees = function()
+    {
+      user.getAllEmployees().then(function(response) 
+      {
+        console.log(response.data);
+      });
+    }*/
+
     self.logout = function() 
     { 
       auth.logout()
@@ -108,6 +139,12 @@ function MainCtrl(user, auth,$window)
 
 }
 
-angular.module('app', []).factory('authInterceptor', authInterceptor).service('user', userService).service('auth', authService).config(function($httpProvider) { $httpProvider.interceptors.push('authInterceptor');}).controller('Main', MainCtrl)
+angular.module('app')
+.factory('authInterceptor', authInterceptor)
+.service('user', userService)
+.service('auth', authService)
+.constant('API', 'http://localhost:8072/api')
+.config(function($httpProvider) { $httpProvider.interceptors.push('authInterceptor');})
+.controller('Main', MainCtrl)
 
 })();
