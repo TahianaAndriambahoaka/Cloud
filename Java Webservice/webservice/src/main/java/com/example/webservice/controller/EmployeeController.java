@@ -25,6 +25,12 @@ public class EmployeeController
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @GetMapping("helloWorld")
+    public String helloWorld()
+    {
+        return "helloWorld";
+    }
+    
     @GetMapping("employees")
     public List<Employee> getAllEmployee()
     {
