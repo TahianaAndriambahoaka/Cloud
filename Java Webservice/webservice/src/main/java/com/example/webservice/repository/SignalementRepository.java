@@ -37,6 +37,11 @@ public interface SignalementRepository extends JpaRepository<Signalement, Long> 
 	@Query(value="select * from Signalement where EXTRACT(YEAR FROM dateheure) = ?1 and (EXTRACT(MONTH FROM dateheure) between ?2 and ?3)  and idType = ?4",nativeQuery= true)
 	List<Signalement> rechercherSignalementBackOffice(Integer annee, Integer moisDebut, Integer moisFin, Long idType);
 	
+	
+	// Recherche avancée BackOffice
+	@Query(value="select * from Signalement where idType = ?1 and (EXTRACT(MONTH FROM dateheure) between ?2 and ?3)",nativeQuery= true)
+	List<Signalement> rechercherSignalementBackOffice(Long idType, Integer moisDebut, Integer moisFin);
+	
 	// Recherche avancée BackOffice
 	@Query(value="select * from Signalement where EXTRACT(YEAR FROM dateheure) = ?1 and idType = ?2",nativeQuery= true)
 	List<Signalement> rechercherSignalementBackOffice(Integer annee, Long idType);

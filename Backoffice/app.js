@@ -69,8 +69,7 @@ function userService($http, API)
 
   self.getNbSignalementParType = function() 
   {
-    // return $http.get(API + '/rechercherSignalement/getNbSignalementParType')
-    return $http.get("http://localhost:8072/rechercherSignalement/getNbSignalementParType")
+    return $http.get(API + '/rechercherSignalement/getNbSignalementParType')
   };
 
 

@@ -7,18 +7,12 @@
       <link rel="stylesheet" type="text/css" href="affectation.css">
 
   <title>Accueil</title>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
   <script src="app.js"></script>
+  <script src="js/jquery.min.js"></script>
 </head>
 <body ng-app="app" ng-controller="Main as main">
-   <nav>
-    <button ng-click="main.getUser()" >affiche user</button>
-      <a href="#">{{main.user}}</a>
-      <a href="#">Affectation</a>
-      <a href="#">Statistique</a>
-  
-  <div id="indicator"></div>
-</nav>
+    <div id="nav"></div>
 <div class="container">
   <div class="card" style="float: left;width: 20%;margin-top: 130px;">
     <div class="header">
@@ -125,5 +119,10 @@
     </table>
 
    </div>
+   <script> 
+       $(function(){
+         $("#nav").load("nav.html");
+       });
+   </script>
   </body>
 </html>

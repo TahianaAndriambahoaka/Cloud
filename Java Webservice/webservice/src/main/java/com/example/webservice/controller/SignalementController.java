@@ -138,11 +138,18 @@ public class SignalementController {
 	}
 
 	// Recherche avancée BackOffice
-	@GetMapping("/rechercherSignalement/annee={annee}&moisDebut={moisDebut}&moisFin={moisFin}&idType={idType}")
+	@GetMapping("/rechercherSignalement/annee={annee}/moisDebut={moisDebut}/moisFin={moisFin}/idType={idType}")
 	public List<Signalement> rechercherSignalementBackOffice(@PathVariable(value = "annee") Integer annee,
 			@PathVariable(value = "moisDebut") Integer moisDebut, @PathVariable(value = "moisFin") Integer moisFin,
 			@PathVariable(value = "idType") Long idType) throws Exception {
 		return this.signalementRepository.rechercherSignalementBackOffice(annee, moisDebut, moisFin, idType);
+	}
+
+	// Recherche avancée BackOffice
+	@GetMapping("/rechercherSignalement/idType={idType}/moisDebut={moisDebut}/moisFin={moisFin}")
+	public List<Signalement> rechercherSignalementBackOffice(@PathVariable(value = "idType") Long idType,
+			@PathVariable(value = "moisDebut") Integer moisDebut, @PathVariable(value = "moisFin") Integer moisFin) throws Exception {
+		return this.signalementRepository.rechercherSignalementBackOffice(idType, moisDebut, moisFin);
 	}
 
 	// Recherche avancée BackOffice
@@ -153,7 +160,7 @@ public class SignalementController {
 	}
 
 	// Recherche avancée BackOffice
-	@GetMapping("/rechercherSignalement/annee{annee}&moisDebut={moisDebut}&moisFin={moisFin}")
+	@GetMapping("/rechercherSignalement/annee{annee}/moisDebut={moisDebut}/moisFin={moisFin}")
 	public List<Signalement> rechercherSignalementBackOffice(@PathVariable(value = "annee") Integer annee,
 			@PathVariable(value = "moisDebut") Integer moisDebut, @PathVariable(value = "moisFin") Integer moisFin)
 			throws Exception {
@@ -168,7 +175,7 @@ public class SignalementController {
 	}
 
 	// Recherche avancée BackOffice
-	@GetMapping("/rechercherSignalement/moisDebut={moisDebut}&moisFin={moisFin}")
+	@GetMapping("/rechercherSignalement/moisDebut={moisDebut}/moisFin={moisFin}")
 	public List<Signalement> rechercherSignalementBackOffice(@PathVariable(value = "moisDebut") Integer moisDebut,
 			@PathVariable(value = "moisFin") Integer moisFin) throws Exception {
 		return this.signalementRepository.rechercherSignalementBackOffice(moisDebut, moisFin);
