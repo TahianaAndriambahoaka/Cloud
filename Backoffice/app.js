@@ -33,14 +33,14 @@ var app = angular.module('myApp', []);
     $scope.supprimerSignalement = function(id){
       console.log("supprimer");
       console.log("idSignalement: "+id);
-      
-      $http.delete("http://localhost:8072/supprimerSignalement/"+id).success(function(response){
-          $http.get("http://localhost:8072/listAffectedSignalement").then(function(response) {
-          $scope.listAffectedSignalement = response.data;
-        });
-      }); 
-  
-      
+      var conf = confirm("Voulez vous vraiment supprimer?");
+      if(conf){
+           $http.delete("http://localhost:8072/supprimerSignalement/"+id).success(function(response){
+            $http.get("http://localhost:8072/listAffectedSignalement").then(function(response) {
+            $scope.listAffectedSignalement = response.data;
+          });
+        }); 
+      }
     }
 
     //Liste signalement non affecté
