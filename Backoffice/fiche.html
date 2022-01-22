@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fiche</title>
+	<link rel="stylesheet" type="text/css" href="fiche.css"><script src="angular.min.js"></script>
+
+    
+</head>
+<body ng-app="ficheApp">
+    <div class="box" ng-controller="ficheCtrl"> 
+        <script> 
+        var app = angular.module('ficheApp', []);
+            app.controller('ficheCtrl', function($scope,$http) {
+                var id=  sessionStorage.getItem("usera");
+                console.log(id);
+                $http.get("http://localhost:8072/signalement/"+id).then(function(response) {
+                    $scope.s = response.data;
+                    console.log($scope.s);
+                });   
+              
+               //Liste region
+                $http.get("http://localhost:8072/regions").then(function(response) {
+                    $scope.listeRegion = response.data;
+                });
+
+            });
+
+     
+    </script>
+
+ <div class="pic-container">
+      <img src="first.png" alt="">
+      <img src="four.png" alt="">
+      <img src="three.png" alt="">
+    </div>
+ <div class="description">
+    <p>{{s[0][4]}}</p>
+     <br>
+     <label for="region">Region</label>
+     <select ng-model="idRegion" id="region">
+        <option value="{{region.id}}" ng-repeat="region in listeRegion">{{region.nom}}</option>
+    </select>
+    <button ng-click="affecterSignalement(s[0][0])" style="background: gold ;border: 1px solid white; width:100px;height: 25px;margin:2%">Affecter</button>
+</div>
+
+     <div class="container">
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <div class="icon">
+                         <h4 style="text-align:center; font-weight: 600;margin-top: 25%;">Type</h4>
+                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <h3>
+                        <a href="https://www.linkedin.com/in/adamdipinto/" target="_blank">{{s[0][1]}}</a>
+                    </h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <div class="icon">
+                        <h4 style="text-align:center; font-weight: 600;margin-top: 25%;">Date</h4>
+                        <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <h3>
+                        <a href="https://twitter.com/AdamDipinto" target="_blank">{{s[0][3]}}</a>
+                    </h3>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <div class="icon">
+                    	<h4 style="text-align:center; font-weight: 600;margin-top: 25%;">Status</h4>
+                        <i class="fa fa-github-square" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <h3>
+                        <a href="https://github.com/atom888" target="_blank">{{s[0][2]}}</a>
+                    </h3>
+                    <p>Ce projet est déjà accopmli par le gouvernement</p>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+
+    </div>
+</body>
+</html>
