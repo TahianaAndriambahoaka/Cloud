@@ -5,36 +5,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Fiche</title>
 	<link rel="stylesheet" type="text/css" href="fiche.css"><script src="angular.min.js"></script>
-
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ui-leaflet/1.0.3/ui-leaflet.min.js"></script>
+    <script src="https://unpkg.com/ui-leaflet-layers@0.1.3/dist/ui-leaflet-layers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-leaflet-directive/0.10.0/angular-leaflet-directive.min.js" ></script>
 </head>
 <body ng-app="ficheApp">
     <div class="box" ng-controller="ficheCtrl"> 
-        <script> 
-        var app = angular.module('ficheApp', []);
-            app.controller('ficheCtrl', function($scope,$http) {
-                var id=  sessionStorage.getItem("usera");
-                console.log(id);
-                $http.get("http://localhost:8072/signalement/"+id).then(function(response) {
-                    $scope.s = response.data;
-                    console.log($scope.s);
-                });   
-              
-               //Liste region
-                $http.get("http://localhost:8072/regions").then(function(response) {
-                    $scope.listeRegion = response.data;
-                });
+        
 
-            });
-
-     
-    </script>
-
- <div class="pic-container">
-      <img src="first.png" alt="">
-      <img src="four.png" alt="">
-      <img src="three.png" alt="">
-    </div>
+<div class="pic-container">
+    <img src="first.png" alt="">
+    <img src="four.png" alt="">
+    <img src="three.png" alt="">
+</div>
  <div class="description">
     <p>{{s[0][4]}}</p>
      <br>
@@ -103,6 +87,109 @@
     </div>
  
 
+
     </div>
+
+    
+    <div ng-app="App" ng-controller="Ctrl"></dvi>
+        <div id="carte">
+            <leaflet width="100%" height="100%" markers="markers" center="centre"></leaflet>
+        </div>
+        </body>
+    </div>
+
+    <script> 
+        var app = angular.module('ficheApp', []);
+
+            app.controller('ficheCtrl', function($scope,$http) {
+                var id=  sessionStorage.getItem("usera");
+                console.log(id);
+                $http.get("http://localhost:8072/signalement/"+id).then(function(response) {
+                    $scope.s = response.data;
+                    console.log($scope.s);
+                    console.log($scope.s[0][6]);
+                    console.log($scope.s[0][7]);
+                });   
+              
+               //Liste region
+                $http.get("http://localhost:8072/regions").then(function(response) {
+                    $scope.listeRegion = response.data;
+                });
+
+            });
+
+            app.controller("Ctrl", function($scope, $http) {
+
+            var numSignalement = 0;
+
+            var coordonnees = [
+            {
+                lat: -18.933333,
+                lng: 47.516667
+            },
+            {
+                lat: -17.2,
+                lng: 48.9
+            }
+            ];
+
+            var local_icons = {
+
+                default_icon: {
+                iconUrl: 'leaflet/images/marker-icon.png',
+                    iconSize:     [25, 40],
+                    iconAnchor:   [22, 94],
+                    popupAnchor:  [-10, -80]
+                }
+            };
+
+            angular.extend($scope, {
+                icons: local_icons
+            });
+
+            var listMarker = [];
+            for (let i = 0; i < coordonnees.length; i++) {
+            listMarker.push( {
+                lat: coordonnees[i].lat,
+                lng: coordonnees[i].lng,
+                focus: false,
+                draggable: false,
+                icon: local_icons.default_icon
+            });
+            }
+
+            angular.extend($scope, {
+                centre: {
+                    lat: coordonnees[numSignalement].lat,
+                    lng: coordonnees[numSignalement].lng,
+                    zoom: 15
+                },
+                markers: listMarker,
+                defaults: {
+                    scrollWheelZoom: false
+                }
+            });
+
+            for(let i=0; i<=1; i++) {
+            $('#list'+i).click(function click() {
+                console.log("ok"+i);
+                angular.extend($scope, {
+                centre: {
+                    lat: coordonnees[i].lat,
+                    lng: coordonnees[i].lng,
+                    zoom: 15
+                },
+                markers: listMarker,
+                defaults: {
+                    scrollWheelZoom: false
+                }
+                });
+                $('#carte').load("itonenah.html #carte");
+            })
+            break;
+            }
+
+            });
+    </script>
 </body>
 </html>

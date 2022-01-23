@@ -89,8 +89,8 @@ public class SignalementController {
 
 	// One
 	@GetMapping("/signalement/{id}")
-	public List<List<Object>> getSignalementById(@PathVariable(value = "id") Long sId)
-			throws ResourceNotFoundException {
+	public List<List<Object>> getSignalementById(@PathVariable(value = "id") Long sId) throws ResourceNotFoundException 
+	{
 		return this.signalementRepository.findOneSignalement(sId);
 	}
 
@@ -102,9 +102,9 @@ public class SignalementController {
 
 	// get signalement by id
 	@GetMapping("/signalementRegion/{id}")
-	public ResponseEntity<Signalement> getRegionById(@PathVariable(value = "id") long idSignalement) throws Exception {
-		Signalement signalement = signalementRepository.findById(idSignalement)
-				.orElseThrow(() -> new ResourceNotFoundException("Signalement not found for this id :: "));
+	public ResponseEntity<Signalement> getRegionById(@PathVariable(value = "id") long idSignalement) throws Exception 
+	{
+		Signalement signalement = signalementRepository.findById(idSignalement).orElseThrow(() -> new ResourceNotFoundException("Signalement not found for this id :: "));
 		return ResponseEntity.ok().body(signalement);
 	}
 

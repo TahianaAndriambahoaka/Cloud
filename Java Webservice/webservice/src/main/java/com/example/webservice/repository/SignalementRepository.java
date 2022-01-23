@@ -11,7 +11,7 @@ import com.example.webservice.model.Signalement;
 
 
 public interface SignalementRepository extends JpaRepository<Signalement, Long> {
-	@Query(value="select signalement.id as id,type.nom as nomType,status,dateHeure,description,idUtilisateur from Signalement join type on type.id = Signalement.idType  where signalement.id= ?1",nativeQuery= true)
+	@Query(value="select signalement.id as id,type.nom as nomType,status,dateHeure,description,idUtilisateur,latitude,longitude from Signalement join type on type.id = Signalement.idType  where signalement.id= ?1",nativeQuery= true)
 	List<List<Object>> findOneSignalement(Long id);
 
 	@Query(value="select * from Signalement where idRegion = ?1 and idType = ?2 and status = ?3",nativeQuery= true)
