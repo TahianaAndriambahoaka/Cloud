@@ -28,11 +28,14 @@ var app = angular.module('myApp', []);
     $scope.terminerSignalement = function(id){
       console.log("terminer");
       console.log("idSignalement: "+id);
-      $http.put("http://localhost:8072/terminerSignalement/"+id).success(function(){
-           $http.get("http://localhost:8072/listAffectedSignalement").then(function(response) {
-              $scope.listAffectedSignalement = response.data;
-            }); 
-      })
+
+      $http({ method: 'PUT',url: 'http://localhost:8072/terminerSignalement/'+id,headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZHZ3ZGZkZGJAZG1pa2puY2RrbsOpY2QiLCJpYXQiOjE2NDMwNTk4MjQsImV4cCI6MTY0MzE0NjIyNH0.mit-MuuFrQo1mh3CSbpro8KyR6zWyG8LeD9ldADsD6RRbc9JHl2MlGtW10vSMdeoFVxw9wdKnVGVPn42NKym7g' ,'Content-Type': 'application/json','Accept':'application/json'}}).then(function successCallback(response) 
+      {
+          console.log(response.data);
+      }, function errorCallback(response) {
+      
+          console.log(response.status);
+      });
      
     }
 
@@ -40,21 +43,15 @@ var app = angular.module('myApp', []);
       console.log("supprimer");
       console.log("idSignalement: "+id);
       
-      $http.delete("http://localhost:8072/supprimerSignalement/"+id).success(function(response){
-          $http.get("http://localhost:8072/listAffectedSignalement").then(function(response) {
-          $scope.listAffectedSignalement = response.data;
-        });
-      }); 
-  
+      $http({ method: 'DELETE',url: 'http://localhost:8072/supprimerSignalement/'+id,headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZHZ3ZGZkZGJAZG1pa2puY2RrbsOpY2QiLCJpYXQiOjE2NDMwNTk4MjQsImV4cCI6MTY0MzE0NjIyNH0.mit-MuuFrQo1mh3CSbpro8KyR6zWyG8LeD9ldADsD6RRbc9JHl2MlGtW10vSMdeoFVxw9wdKnVGVPn42NKym7g' ,'Content-Type': 'application/json','Accept':'application/json'}}).then(function successCallback(response) 
+      {
+          console.log(response.data);
+      }, function errorCallback(response) {
       
-    }
+          console.log(response.status);
+      });
 
-    /*//Liste signalement non affecté
-    $http.get("http://localhost:8072/listNewSignalement").then(function(response) {
-        console.log(response.data);
-        $scope.listNewSignalement = response.data;
-        //console.log(response.data[0]);
-    });*/
+    }
 
     
     $http({ method: 'GET',url: 'http://localhost:8072/listNewSignalement',headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZHZ3ZGZkZGJAZG1pa2puY2RrbsOpY2QiLCJpYXQiOjE2NDMwNTk4MjQsImV4cCI6MTY0MzE0NjIyNH0.mit-MuuFrQo1mh3CSbpro8KyR6zWyG8LeD9ldADsD6RRbc9JHl2MlGtW10vSMdeoFVxw9wdKnVGVPn42NKym7g' ,'Content-Type': 'application/json','Accept':'application/json'}}).then(function successCallback(response) 
@@ -91,5 +88,7 @@ var app = angular.module('myApp', []);
           console.log(response.status);
     });
 
+    $scope.supprimerSignalement('11');
+    $scope.terminerSignalement('5');
 
   });
