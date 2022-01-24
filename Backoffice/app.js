@@ -62,16 +62,17 @@ var app = angular.module('myApp', []);
         $scope.listAffectedSignalement = response.data;
     });*/
 
-    $http({ method: 'GET',url: 'http://localhost:8072/listAffectedSignalement',headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZHl3ZGZkZGJAZG1pa2puY2RrbsOpY2QiLCJpYXQiOjE2NDMwNTkyNzQsImV4cCI6MTY0MzE0NTY3NH0.eVUTXI6o6O94kk03EhfuQo9dmwQPSCFhAOGIfoCjMWyCxrKhaNoQyeCYGQeZrnIT6sL0oGi43XIk7cTGzI9W2A' ,'Content-Type': 'application/json','Accept':'application/json'}}).then(function successCallback(response) 
+    $http({ method: 'GET',url: 'http://localhost:8072/listAffectedSignalement',headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZHZ3ZGZkZGJAZG1pa2puY2RrbsOpY2QiLCJpYXQiOjE2NDMwNTk4MjQsImV4cCI6MTY0MzE0NjIyNH0.mit-MuuFrQo1mh3CSbpro8KyR6zWyG8LeD9ldADsD6RRbc9JHl2MlGtW10vSMdeoFVxw9wdKnVGVPn42NKym7g' ,'Content-Type': 'application/json','Accept':'application/json'}}).then(function successCallback(response) 
     {
           console.log(response.data)
     }, function errorCallback(response) {
       
           console.log(response.status);
-      
-  });
-/*
+    });
+
     $http.get("http://localhost:8072/regions").then(function(response) {
         $scope.listeRegion = response.data;
-    });*/
+    });
+
+
   });
