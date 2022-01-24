@@ -11,7 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Signalement")
-public class Signalement {
+public class Signalement 
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -20,7 +21,7 @@ public class Signalement {
 	private long idType;
 	
 	@Column(name="idregion")
-	private Integer idRegion;
+	private long idRegion;
 	
 	@Column(name="status")
 	private String status;
@@ -40,9 +41,12 @@ public class Signalement {
 	@Column(name="idutilisateur")
 	private long idUtilisateur;
 
-	public Signalement(){}
-	public Signalement(long id, long idType, Integer idRegion, String status, Date dateHeure, double latitude,double longitude, String description, long idUtilisateur) {
-		this.id = id;
+	@Column(name="photo")
+	private String photo;
+
+/*
+	public Signalement(long idType,long idRegion,String status,Date dateHeure,double latitude,double longitude,String description,long idUtilisateur,String photo)
+	{
 		this.idType = idType;
 		this.idRegion = idRegion;
 		this.status = status;
@@ -51,7 +55,10 @@ public class Signalement {
 		this.longitude = longitude;
 		this.description = description;
 		this.idUtilisateur = idUtilisateur;
+		this.photo = photo;
 	}
+*/
+	public Signalement(){}
 
 
 	public long getId() {
@@ -70,11 +77,11 @@ public class Signalement {
 		this.idType = idType;
 	}
 
-	public int getIdRegion() {
+	public long getIdRegion() {
 		return idRegion;
 	}
 
-	public void setIdRegion(Integer idRegion) {
+	public void setIdRegion(long idRegion) {
 		this.idRegion = idRegion;
 	}
 
@@ -124,5 +131,13 @@ public class Signalement {
 
 	public void setIdUtilisateur(long idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 }

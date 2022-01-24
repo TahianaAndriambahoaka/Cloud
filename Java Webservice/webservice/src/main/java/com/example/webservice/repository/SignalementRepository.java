@@ -10,7 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import com.example.webservice.model.Signalement;
 
 
-public interface SignalementRepository extends JpaRepository<Signalement, Long> {
+public interface SignalementRepository extends JpaRepository<Signalement, Long> 
+{
 	@Query(value="select signalement.id as id,type.nom as nomType,status,dateHeure,description,idUtilisateur,latitude,longitude from Signalement join type on type.id = Signalement.idType  where signalement.id= ?1",nativeQuery= true)
 	List<List<Object>> findOneSignalement(Long id);
 
@@ -25,7 +26,6 @@ public interface SignalementRepository extends JpaRepository<Signalement, Long> 
 
 	@Query(value="select signalement.id as id,region.nom as nomRegion,type.nom as nomType,status,dateHeure,description,idUtilisateur from Signalement join region on region.id = Signalement.idRegion join type on type.id = Signalement.idType where status = 'termine'",nativeQuery= true)
 	List<List<Object>> getListNotification();
-
 
 	void deleteById(long id);
 

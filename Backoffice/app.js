@@ -1,11 +1,12 @@
 var app = angular.module('myApp', []);
-  app.config(['$httpProvider', function($httpProvider) {
+  app.config(['$httpProvider', function($httpProvider) 
+  {
     $httpProvider.defaults.withCredentials = true;
   }])
 
-  app.controller('myCtrl', function($window,$scope,$http) {
-     console.log("a");
-
+  app.controller('myCtrl', function($window,$scope,$http) 
+  {
+     /*console.log("a");
 
     $scope.versAffectation = function(idSignalement)
     {
@@ -48,7 +49,7 @@ var app = angular.module('myApp', []);
   
       
     }
-/*
+
     //Liste signalement non affecté
     $http.get("http://localhost:8072/listNewSignalement").then(function(response) {
         console.log(response.data);
@@ -61,7 +62,8 @@ var app = angular.module('myApp', []);
         $scope.listAffectedSignalement = response.data;
     });*/
 
-    $http({ method: 'GET',url: 'http://localhost:8072/listAffectedSignalement',headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZGFtYSIsImlhdCI6MTY0Mjg1NDM2NiwiZXhwIjoxNjQyOTQwNzY2fQ.zrzSNPXLQwhdBnWqx1m3kjDhXRJpGs5e83iesMzS2Bg56G6MbZ-qvmm_Xw_V52qjovKhApxJNtsS2jwYZa1SCw' ,'Content-Type': 'application/json','Accept':'application/json'}}).then(function successCallback(response) {
+    $http({ method: 'GET',url: 'http://localhost:8072/listAffectedSignalement',headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZHl3ZGZkZGJAZG1pa2puY2RrbsOpY2QiLCJpYXQiOjE2NDMwNTkyNzQsImV4cCI6MTY0MzE0NTY3NH0.eVUTXI6o6O94kk03EhfuQo9dmwQPSCFhAOGIfoCjMWyCxrKhaNoQyeCYGQeZrnIT6sL0oGi43XIk7cTGzI9W2A' ,'Content-Type': 'application/json','Accept':'application/json'}}).then(function successCallback(response) 
+    {
           console.log(response.data)
     }, function errorCallback(response) {
       

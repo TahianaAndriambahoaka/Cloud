@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table(name="Personne")
@@ -22,9 +24,11 @@ public class Personne {
 	@Column(name="prenom")
 	private String prenom;
 
+	@Email
 	@Column(name="username")
 	private String username;
 
+	@Size(min=6, max = 100)
 	@Column(name="password")
 	private String password;
 
