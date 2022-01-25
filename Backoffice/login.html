@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="login.css">
-	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
-  <script src="app.js"></script>
-</head>
-<body  ng-app="app" ng-controller="Main as main">
-	
-<div class="container" id="container">
-	<div class="form-container sign-in-container">
-		<form>
-			<h1>BACKOFFICE</h1>
-			<div class="social-container">
-				
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<script src="js/angular.min.js"></script>
+		<script src="js/loginApp.js"></script>
+	</head>
+	<body  ng-app="myApp"  ng-controller="main"> 
+		<div class="container" id="container">
+			<div class="form-container sign-in-container" >
+				<form>
+					<h1>BACKOFFICE</h1>
+					<div class="social-container"></div>
+					<span>Entrez votre identifiant et mot de passe: {{val}}</span>
+					<input type="text" placeholder="Login"   ng-model="username"/>
+					<input type="password" placeholder="Mot de passe" ng-model="password" />
+					<button ng-click="login()" >Se connecter</button>
+					<span>{{message}}</span>
+				</form>
 			</div>
-			<span>Entrez votre identifiant et mot de passe</span>
-			<input type="text" placeholder="Login"  name="text" ng-model="main.username"/>
-			<input type="password" placeholder="Mot de passe"  name="password" ng-model="main.password" />
-			<button ng-click="main.login()" >Se connecter</button>
-		</form>
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			
-			<div class="overlay-panel overlay-right">
-				<h1>Avertissement!</h1>
-				<p>Accès autorisé seulement aux administrateurs du site.</p>
-				<p>Une fois que vous vous connecter, vous pouvez acceder à toutes les informations réstreinte du site avec une contrôle totale des données.</p>
+			<div class="overlay-container">
+				<div class="overlay">
+					<div class="overlay-panel overlay-right">
+						<h1>Avertissement!</h1>
+						<p>Accès autorisé seulement aux administrateurs du site.</p>
+						<p>Une fois que vous vous connecter, vous pouvez acceder à toutes les informations réstreinte du site avec une contrôle totale des données.</p>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-
-
-</body>
+	</body>
 </html>
