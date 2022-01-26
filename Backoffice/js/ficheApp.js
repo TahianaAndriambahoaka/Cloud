@@ -16,34 +16,16 @@
     function myCtrl($window, $scope, $http) {
 
         $scope.getOneSignalement = function(idSignalement) {
-            // $http.get('http://localhost:8072/signalement/photo/' + idSignalement).then(function successCallback(response) {
-            //     console.log("$scope.photo");
-            //     // $scope.photo = "http://localhost:1234/a.jpg";
-            //     // console.log($scope.photo);
-            //     // $scope.photo = response.data;
-            //     // document.getElementById('photo').innerHTML = "< img src = 'http: //localhost:1234/" + $scope.photo + "' alt = 'Une erreur s est produite lors du chargement de l image'> ";
-            //     // document.getElementById("pic-container").innerHTML = "bbbbbbbbb";
-            // });
-            $http.get('http://localhost:8072/signalement/photo/' + idSignalement).then(function successCallback(response) {
-                console.log("$scope.photo");
+            $http.get('http://localhost:8072/signalement/' + idSignalement).then(function successCallback(response) {
+                var photo = response.data[0][9];
+                // $scope.photo = "storage/" + response.data;
+                document.getElementById("pic-container").innerHTML = "<img src = 'storage/" + photo + "' alt = 'Une erreur s est produite lors du chargement de l image'>";
             });
             $http.get('http://localhost:8072/signalement/' + idSignalement).then(function successCallback(response) {
                 $scope.oneSignalement = response.data
                 console.log($scope.oneSignalement);
             });
         }
-
-        // $scope.getPhotoSignalement = function(idSignalement) {
-        //     $http.get('http://localhost:8072/signalement/photo/' + idSignalement).then(function successCallback(response) {
-        //         // $scope.photo = "http://localhost:1234/a.jpg";
-        //         console.log("$scope.photo");
-        //         console.log($scope.photo);
-        //         $scope.photo = response.data;
-        //         // document.getElementById('photo').innerHTML = "< img src = 'http: //localhost:1234/" + $scope.photo + "' alt = 'Une erreur s est produite lors du chargement de l image'> ";
-        //         // document.getElementById("pic-container").innerHTML = "bbbbbbbbb";
-        //     });
-        // }
-
         $scope.affecterSignalement = function(idSignalement) {
             // console.log("idS: "+idSignalement);
             // console.log("idReg: "+$scope.idRegion);
@@ -66,7 +48,6 @@
 
         //ON LOAD  
         $scope.getOneSignalement(sessionStorage.getItem("idSignalement"));
-        // $scope.getPhotoSignalement(sessionStorage.getItem("idSignalement"));
         $scope.getListRegion();
 
     }

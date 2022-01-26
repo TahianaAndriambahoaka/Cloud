@@ -12,7 +12,7 @@ import com.example.webservice.model.Signalement;
 
 public interface SignalementRepository extends JpaRepository<Signalement, Long> 
 {
-	@Query(value="select signalement.id as id,type.nom as nomType,region.nom as nomRegion,status,dateHeure,description,idUtilisateur,latitude,longitude from Signalement join type on type.id = Signalement.idType join region on signalement.idRegion = region.id where signalement.id= ?1",nativeQuery= true)
+	@Query(value="select signalement.id as id,type.nom as nomType,region.nom as nomRegion,status,dateHeure,description,idUtilisateur,latitude,longitude, photo from Signalement join type on type.id = Signalement.idType join region on signalement.idRegion = region.id where signalement.id= ?1",nativeQuery= true)
 	List<List<Object>> findOneSignalement(Long id);
 
 	@Query(value="select * from Signalement where idRegion = ?1 and idType = ?2 and status = ?3",nativeQuery= true)

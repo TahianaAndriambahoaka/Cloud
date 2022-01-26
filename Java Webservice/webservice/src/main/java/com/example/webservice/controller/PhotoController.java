@@ -49,26 +49,26 @@ public class PhotoController {
 
 	private String uploadLocation = "Java Webservice/upload";
 
-	@GetMapping(value = "/signalement/photo/{idSignalement}")
-	public ResponseEntity<?> getCheminImage(@PathVariable(value = "idSignalement") long idSignalement) throws IOException {
-		List<Photo> lp = photoRepository.findPhotoByIdSignalement(idSignalement);
-		if (lp.isEmpty()) {
-			return ResponseEntity.ok().body(null);
-		} else {
-			Photo p = lp.get(0);
-			String imageName = p.getPhoto();
-			var path = Paths.get(uploadLocation + "/" + imageName);
-			// File file = path.toFile();
-			// byte[] fileData = new byte[(int) file.length()];
-			// byte[] encoded = Base64.getEncoder().encode(fileData);
-			// FileInputStream in = new FileInputStream(file);
-			// in.read(fileData);
-			// in.close();
-			// String hex = DatatypeConverter.printHexBinary(fileData);
-			// System.out.println(hex);
-			return ResponseEntity.ok().body(imageName);
-		}
-	}
+	// @GetMapping(value = "/signalement/photo/{idSignalement}")
+	// public ResponseEntity<?> getCheminImage(@PathVariable(value = "idSignalement") long idSignalement) throws IOException {
+	// 	List<Photo> lp = photoRepository.findPhotoByIdSignalement(idSignalement);
+	// 	if (lp.isEmpty()) {
+	// 		return ResponseEntity.ok().body(null);
+	// 	} else {
+	// 		Photo p = lp.get(0);
+	// 		String imageName = p.getPhoto();
+	// 		var path = Paths.get(uploadLocation + "/" + imageName);
+	// 		// File file = path.toFile();
+	// 		// byte[] fileData = new byte[(int) file.length()];
+	// 		// byte[] encoded = Base64.getEncoder().encode(fileData);
+	// 		// FileInputStream in = new FileInputStream(file);
+	// 		// in.read(fileData);
+	// 		// in.close();
+	// 		// String hex = DatatypeConverter.printHexBinary(fileData);
+	// 		// System.out.println(hex);
+	// 		return ResponseEntity.ok().body(imageName);
+	// 	}
+	// }
 
 	@Autowired
 	private PhotoRepository photoRepository;

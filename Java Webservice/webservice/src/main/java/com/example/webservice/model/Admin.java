@@ -8,15 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Admin")
-public class Admin 
-{
+@Table(name = "Admin")
+public class Admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@Column(name="idpersonne")
-	private int idPersonne;
+
+	@Column(name = "idpersonne")
+	private long idPersonne;
+
+	public Admin(long idPersonne) {
+		this.idPersonne = idPersonne;
+	}
 
 	public long getId() {
 		return id;
@@ -26,7 +29,7 @@ public class Admin
 		this.id = id;
 	}
 
-	public int getIdPersonne() {
+	public long getIdPersonne() {
 		return idPersonne;
 	}
 
