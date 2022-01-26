@@ -1,77 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="affectation.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/affectation.css">
     <title>Accueil</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
 </head>
-    <body >
-        <nav>
-            <a href="#">Accueil</a>
-            <a href="#">Affectation</a>
-            <a href="#">Statistique</a>
+
+<body>
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#">Affectation</a>
+        <a href="#">Statistique</a>
         <div id="indicator"></div>
-        </nav>
-        <div class="card" style="float: right;width:75%;background: #ffff;height: 100vh;padding: 20px;" ng-app="myApp" ng-controller="myCtrl">
-            <h2>Responsive Table</h2>
-            <div class="table-wrapper">
-                <table class="fl-table">
-                    <thead>
-                        <tr>
-                            <th>Nom Type</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody ng-repeat="type in types">
-                        <tr>
-                            <td>{{type.nom}}</td>
-                            <td><button ng-click = "delete(type.id)" >Delete</button></td>
-                        </tr>
+    </nav>
+    <div class="card" style="float: right;width:75%;background: #ffff;height: 100vh;padding: 20px;" ng-app="myApp" ng-controller="myCtrl">
+        <h2>Responsive Table</h2>
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Nom Type</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="type in types">
+                    <tr>
+                        <td>{{type.nom}}</td>
+                        <td><button ng-click="delete(type.id)">Delete</button></td>
+                    </tr>
                     <tbody>
-                </table>
-                <input type="text" placeholder="Add" name='name' ng-model="value" />
-                <input type="submit" value="Save"  ng-click="submit()" />
-            </div>
+            </table>
+            <input type="text" placeholder="Add" name='name' ng-model="value" />
+            <input type="submit" value="Save" ng-click="submit()" />
         </div>
+    </div>
 
     <script>
         var app = angular.module('myApp', []);
-        app.controller('myCtrl', function($scope, $http) 
-        {
-            $http.get("http://localhost:8072/types").then(function(response) 
-            {
+        app.controller('myCtrl', function($scope, $http) {
+            $http.get("http://localhost:8072/types").then(function(response) {
                 $scope.types = response.data;
             });
 
-            $scope.submit = function() 
-            {
-                $http.post("http://localhost:8072/type",{nom:$scope.value}).then(function(res)
-                {
-                    $http.get("http://localhost:8072/types").then(function(response) 
-                    {
+            $scope.submit = function() {
+                $http.post("http://localhost:8072/type", {
+                    nom: $scope.value
+                }).then(function(res) {
+                    $http.get("http://localhost:8072/types").then(function(response) {
                         $scope.types = response.data;
                     });
                 })
-            } 
+            }
 
-            $scope.delete = function(id) 
-            {
+            $scope.delete = function(id) {
                 console.log("suppr");
-                $http.delete("http://localhost:8072/type/"+id).then(function(res)
-                {
-                    $http.get("http://localhost:8072/types").then(function(response) 
-                    {
+                $http.delete("http://localhost:8072/type/" + id).then(function(res) {
+                    $http.get("http://localhost:8072/types").then(function(response) {
                         $scope.types = response.data;
                     });
 
                 })
-            } 
+            }
 
-            
+
         });
     </script>
-  </body>
+</body>
+
 </html>

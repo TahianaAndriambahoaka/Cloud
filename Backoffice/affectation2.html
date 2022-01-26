@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accueil</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/affectation.css">
+    <title>Accueil</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/affectationApp.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="main">
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#">Affectation</a>
+        <a href="#">Statistique</a>
+        <div id="indicator"></div>
+    </nav>
+
+    <div class="container"></div>
+
+
+    <div class="card" style="float: right;width:75%;background: #ffff;height: 100vh;padding: 20px;margin-right: 2%;">
+        <h2></h2>
+        <div class="table-wrapper">
+            <div class="table-wrapper" ng-controller="main">
+                <h1 style="text-align:center;">Liste des signalements non affectés</h1>
+                <table class="fl-table">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>type</th>
+                            <th>status</th>
+                            <th>date</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+                        <tr ng-repeat="item in listNewSignalement">
+                            <td>{{item[0]}}</td>
+                            <td>{{item[1]}}</td>
+                            <td>{{item[2]}}</td>
+                            <td>{{item[3]}}</td>
+
+
+
+                            <td><button ng-click="versFiche(item[0])">Voir plus</button></td>
+
+                        </tr>
+                        <tbody>
+                </table>
+
+            </div><br>
+        </div>
+
+        <script>
+            $(function() {
+                $("#nav").load("nav.html");
+            });
+            $(function() {
+                $(".container").load("nav-gauche.html");
+            });
+        </script>
+</body>
+
+</html>
