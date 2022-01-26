@@ -12,7 +12,8 @@
         }
     }
 
-    function myCtrl($window, $scope, $http) {
+    function myCtrl($window, $scope, $http) 
+    {
         $scope.versAffectation = function(idSignalement) {
             sessionStorage.setItem("usera", idSignalement);
             $window.location.href = './fiche.html';
