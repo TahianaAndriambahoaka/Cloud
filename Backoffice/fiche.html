@@ -11,14 +11,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ui-leaflet/1.0.3/ui-leaflet.min.js"></script>
     <script src="https://unpkg.com/ui-leaflet-layers@0.1.3/dist/ui-leaflet-layers.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-leaflet-directive/0.10.0/angular-leaflet-directive.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.js"></script>
+    <!-- <script src="https://code.angularjs.org/1.4.0/angular.min.js"></script> -->
+    <script src="https://code.angularjs.org/1.4.0/angular-sanitize.min.js"></script>
+    <script src="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
+    <!-- <script src="map/script.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.css" />
+    <link rel="stylesheet" href="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.css" />
     <script src="js/ficheApp.js"></script>
+
 </head>
 
-<body ng-app="myApp">
-    <div class="box" ng-controller="main">
-        <div class="pic-container" id="pic-container">
-            
+<body>
+    <div class="box" ng-app="myApp" ng-controller="main">
+        <div class="pic-container" id="pic-container"></div>
+
+
+
+        <div class="pic-container" style="margin-left: 50%;">
+            <div>ttttttttttttttttttttttttttttttttt
+                <openlayers ol-center="center" height="400px" width="100%">
+                    <ol-marker ol-marker-properties="finisterre" class="hidden"><span></span></ol-marker>
+                </openlayers>
+            </div>
         </div>
+
+
+
         <div class="description ">
             <h4>Region:</h4>
             <p> {{oneSignalement[0][2]}}</p><br>
@@ -28,9 +48,8 @@
             <br>
             <label for="region ">Region</label>
             <select ng-model="idRegion " id="region ">
-
-        <option value="{{region.id}} " ng-repeat="region in listeRegion ">{{region.nom}}</option>
-    </select>
+                <option value="{{region.id}} " ng-repeat="region in listeRegion ">{{region.nom}}</option>
+            </select>
             <button ng-click="affecterSignalement(oneSignalement[0][0]) " style="background: gold ;border: 1px solid white; width:100px;height: 25px;margin:2% ">Affecter</button>
         </div>
 
@@ -96,7 +115,36 @@
     </div>
 
 
+    <!-- div carte -->
 
+    <script>
+        /*var app = angular.module("demoapp", ["openlayers-directive"]);
+
+                                        app.controller("DemoController", ['$scope', function($scope) {
+                                            $scope.showDetails = function(id) {
+                                                alert('lat: ' + id.lat + ', ' + 'lon: ' + id.lon);
+                                            };
+                                            angular.extend($scope, {
+                                                center: {
+                                                    lat: -18.933333,
+                                                    lon: 47.516667,
+                                                    zoom: 9
+                                                },
+                                                finisterre: {
+                                                    lat: -18.933333,
+                                                    lon: 47.516667,
+                                                    label: {
+                                                        show: false
+                                                    },
+                                                    onClick: function(event, properties) {
+                                                        alert('lat: ' + properties.lat + ', ' + 'lon: ' + properties.lon);
+                                                    }
+                                                }
+                                            });
+
+                                        }]);*/
+    </script>
+    <!-- fin div carte -->
 </body>
 
 </html>

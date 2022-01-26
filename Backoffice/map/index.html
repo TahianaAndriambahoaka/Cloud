@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="demoapp">
-  <head>
+
+<head>
+    <title>Map</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.js"></script>
     <script src="https://code.angularjs.org/1.4.0/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.4.0/angular-sanitize.min.js"></script>
@@ -8,14 +10,13 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.css" />
     <link rel="stylesheet" href="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body ng-controller="DemoController">
-    <h1>Open Layers Demo</h1>
-    <p>Click on the <em>map marker</em> for <strong>Fisterra</strong> or <strong>Santa Comba</strong>to see the latitude and longitude.</p>
-    <p>Click on the map marker <em>popover</em> for <strong>Santiago de Compostela</strong> to see the latitude and longitude.</p>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+</head>
+
+<body ng-controller="DemoController">
     <openlayers ol-center="center" height="400px" width="100%">
-      <ol-marker ol-marker-properties="finisterre" class="hidden"><span></span></ol-marker>
+        <ol-marker ol-marker-properties="finisterre" class="hidden"><span></span></ol-marker>
     </openlayers>
-  </body>
+</body>
+
 </html>
