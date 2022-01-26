@@ -14,7 +14,8 @@
 
     function myCtrl($window, $scope, $http) 
     {
-        $scope.versAffectation = function(idSignalement) {
+        $scope.versAffectation = function(idSignalement) 
+        {
             sessionStorage.setItem("usera", idSignalement);
             $window.location.href = './fiche.html';
         }
@@ -60,7 +61,8 @@
             }
         }
 
-        $scope.supprimerSignalement = function(id) {
+        $scope.supprimerSignalement = function(id) 
+        {
             $http.delete('http://localhost:8072/supprimerSignalement/' + id).then(function successCallback(response) {
                     console.log(response.data);
                 },
