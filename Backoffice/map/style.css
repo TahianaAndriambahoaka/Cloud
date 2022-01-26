@@ -1,0 +1,10 @@
+.popup-label {
+    cursor: pointer;
+  }
+  .popup-label p {
+    margin: 0;
+    padding: 5px 3px;
+  }
+  .hidden {
+    visibility: hidden;
+  }
