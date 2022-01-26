@@ -1,6 +1,4 @@
 package com.example.webservice.security.services;
-
-import com.example.webservice.model.User;
 import com.example.webservice.model.Personne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,18 +21,12 @@ public class UserPrinciple implements UserDetails
         this.id = id;
         this.username = username;
         this.password = password;
-       
-    }
-
-    public static UserPrinciple build(User user) 
-    {
-        return new UserPrinciple(user.getId(),user.getUsername(),user.getPassword());
     }
 
     
     public static UserPrinciple build(Personne user) 
     {
-        return new UserPrinciple(user.getId(),user.getUsername(),user.getPassword());
+        return new UserPrinciple(user.getId(),user.getEmail(),user.getPassword());
     }
 
     public Long getId() {
@@ -83,7 +75,8 @@ public class UserPrinciple implements UserDetails
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() 
+    {
         return null;
     }
 }

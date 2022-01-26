@@ -132,7 +132,7 @@ public class SignalementController
 
 	// insert
 	@PostMapping("/signalement")
-	public Signalement createSignalement(@RequestPart MultipartFile file,@RequestBody Signalement signalement) throws Exception 
+	public Signalement createSignalement(@RequestPart Signalement signalement,@RequestPart MultipartFile file) throws Exception 
 	{
 		signalement.setPhoto(saveFile(file));
 		return this.signalementRepository.save(signalement);

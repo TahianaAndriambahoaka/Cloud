@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.example.webservice.model.ResponsableRegion;
 
 @Repository
-public interface ResponsableRegionRepository extends JpaRepository<ResponsableRegion, Long> {
-
-}
+public interface ResponsableRegionRepository extends JpaRepository<ResponsableRegion, Long> { }

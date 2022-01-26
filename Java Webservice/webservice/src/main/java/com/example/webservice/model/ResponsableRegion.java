@@ -9,7 +9,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Responsable_region")
-public class ResponsableRegion {
+public class ResponsableRegion 
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -19,8 +20,15 @@ public class ResponsableRegion {
 
 	@Column(name="idregion")
 	private long idRegion;
+	
+	public ResponsableRegion(long idPersonne,long idRegion)
+	{
+		this.idPersonne = idPersonne;
+		this.idRegion = idRegion;
+	}
 
-	public long getId() {
+	public long getId() 
+	{
 		return id;
 	}
 

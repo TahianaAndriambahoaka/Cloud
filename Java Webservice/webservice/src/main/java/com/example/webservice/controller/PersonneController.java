@@ -13,7 +13,8 @@ import com.example.webservice.repository.PersonneRepository;
 
 @RestController
 @RequestMapping("/")
-public class PersonneController {
+public class PersonneController 
+{
 	@Autowired
     private PersonneRepository personneRepository;
 	

@@ -9,7 +9,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Admin")
-public class Admin {
+public class Admin 
+{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;

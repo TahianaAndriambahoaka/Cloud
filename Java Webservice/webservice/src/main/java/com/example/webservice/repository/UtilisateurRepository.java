@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 import com.example.webservice.model.Utilisateur;
 
 @Repository
-public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
-
-}
+public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> { }
