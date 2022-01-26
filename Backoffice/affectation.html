@@ -4,15 +4,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
-	  <link rel="stylesheet" type="text/css" href="affectation.css">
-    <script src="angular.min.js"></script>
-
-    <script src="app.js"></script>
+	  <link rel="stylesheet" type="text/css" href="css/affectation.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/affectationApp.js"></script>
 </head>
 <body ng-app="myApp">
-	<a href="accueil.html" style="text-decoration: none; margin: 10px; font-family: Open Sans; color: black; ">Retour</a>
-<div class="table-wrapper" ng-controller="myCtrl">
-    
+
+<div class="table-wrapper" ng-controller="main">
+        <h1 style="text-align:center;">Liste des signalements non affectés</h1>
         <table class="fl-table">
             <thead>
             <tr>
@@ -20,40 +19,29 @@
                 <th>type</th>
                 <th>status</th>
                 <th>date</th>
-                <th>choix du region</th>
                 <th>Options</th>
             </tr>
             </thead>
             <tbody>
                 
-                <tr>
-                    <td>jbjbvj</td>
-                    <td>njbjb</td>
-                    <td> j bj </td>
-                    <td>jbjbj</td>
-                    <td>
-    
-                   
-                    <td><button ng-click="versAffectation(item[0])">Affecter</button></td>
-                    <td><button">Supprimer</button></td>
-                </tr>
+                
                 
             <tr ng-repeat="item in listNewSignalement">
                 <td>{{item[0]}}</td>
                 <td>{{item[1]}}</td>
                 <td>{{item[2]}}</td>
                 <td>{{item[3]}}</td>
-                <td>
+                
 
                
-                <td><button ng-click="versAffectation(item[0])">Affecter</button></td>
-                <td><button">Supprimer</button></td>
+                <td><button ng-click="versFiche(item[0])">Voir plus</button></td>
+             
             </tr>
             <tbody>
         </table>
 
-</div>
-
+</div><br>
+    <a href="accueil.html" style=" margin: 10px; font-family: Open Sans; font-weight: 600; color: black; ">Retour</a>
 
 
 </body>

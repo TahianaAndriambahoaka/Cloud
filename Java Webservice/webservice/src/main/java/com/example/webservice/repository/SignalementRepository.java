@@ -12,16 +12,16 @@ import com.example.webservice.model.Signalement;
 
 public interface SignalementRepository extends JpaRepository<Signalement, Long> 
 {
-	@Query(value="select signalement.id as id,type.nom as nomType,status,dateHeure,description,idUtilisateur,latitude,longitude from Signalement join type on type.id = Signalement.idType  where signalement.id= ?1",nativeQuery= true)
+	@Query(value="select signalement.id as id,type.nom as nomType,region.nom as nomRegion,status,dateHeure,description,idUtilisateur,latitude,longitude from Signalement join type on type.id = Signalement.idType join region on signalement.idRegion = region.id where signalement.id= ?1",nativeQuery= true)
 	List<List<Object>> findOneSignalement(Long id);
 
 	@Query(value="select * from Signalement where idRegion = ?1 and idType = ?2 and status = ?3",nativeQuery= true)
 	List<Signalement> rechercherSignalement(Integer idRegion,Long idType,String status);
 	
-	@Query(value="select signalement.id as id,type.nom as nomType,status,dateHeure,description,idUtilisateur from Signalement join type on type.id = Signalement.idType where  signalement.id  in (select id from signalement where idRegion IS NULL)",nativeQuery= true)
+	@Query(value="select signalement.id as id,type.nom as nomType,status,dateHeure,description,idUtilisateur from Signalement join type on type.id = Signalement.idType where  signalement.id  in (select id from signalement where idRegion = 1)",nativeQuery= true)
 	List<List<Object>> findSignalementNotAffected();
 
-	@Query(value="select signalement.id as id,region.nom as nomRegion,type.nom as nomType,status,dateHeure,description,idUtilisateur from Signalement join region on region.id = Signalement.idRegion join type on type.id = Signalement.idType where signalement.idRegion IS NOT NULL",nativeQuery= true)
+	@Query(value="select signalement.id as id,region.nom as nomRegion,type.nom as nomType,status,dateHeure,description,idUtilisateur from Signalement join region on region.id = Signalement.idRegion join type on type.id = Signalement.idType where signalement.idRegion != 1",nativeQuery= true)
 	List<List<Object>> findAffectedSignalement();
 
 	@Query(value="select signalement.id as id,region.nom as nomRegion,type.nom as nomType,status,dateHeure,description,idUtilisateur from Signalement join region on region.id = Signalement.idRegion join type on type.id = Signalement.idType where status = 'termine'",nativeQuery= true)
