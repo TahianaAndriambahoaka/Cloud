@@ -8,12 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.validation.constraints.Email;
 
 @Entity
 @Table(name="Personne")
-public class Personne {
+public class Personne 
+{
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -25,10 +26,9 @@ public class Personne {
 	private String prenom;
 
 	@Email
-	@Column(name="username")
-	private String username;
+	@Column(name="email")
+	private String email;
 
-	@Size(min=6, max = 100)
 	@Column(name="password")
 	private String password;
 
@@ -43,15 +43,9 @@ public class Personne {
 
 	}
 	
-	/*public Personne(String username,String password)
+	public Personne(String email,String password,String nom,String prenom)
 	{
-		this.username=username;
-		this.password=password;
-	}*/
-
-	public Personne(String username,String password,String nom,String prenom)
-	{
-		this.username=username;
+		this.email=email;
 		this.password= password;
 		this.nom = nom;
 		this.prenom=prenom;
@@ -82,12 +76,12 @@ public class Personne {
 		this.prenom = prenom;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {

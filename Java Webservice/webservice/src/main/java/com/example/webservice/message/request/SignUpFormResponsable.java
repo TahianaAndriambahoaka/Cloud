@@ -1,8 +1,8 @@
 package com.example.webservice.message.request;
 
-public class SignUpForm 
+public class SignUpFormResponsable 
 {
-
+    
     private String email;
 
     private String password;
@@ -11,8 +11,21 @@ public class SignUpForm
 
     private String prenom;
 
+    private long idRegion;
 
-    public String getEmail() {
+
+    public long getIdRegion() 
+    {
+        return idRegion;
+    }
+
+    public void setIdRegion(long idRegion) 
+    {
+        this.idRegion = idRegion;
+    }
+
+    public String getEmail() 
+    {
         return email;
     }
 
@@ -30,7 +43,6 @@ public class SignUpForm
         
     }
 
-    
 	public String getNom() {
 		return nom;
 	}
@@ -47,5 +59,4 @@ public class SignUpForm
     {
 		this.prenom = prenom;
 	}
-
 }

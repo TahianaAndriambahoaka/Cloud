@@ -1,7 +1,4 @@
 package com.example.webservice.security.services;
-
-//import com.example.webservice.model.User;
-import com.example.webservice.repository.UserRepository;
 import com.example.webservice.model.Personne;
 import com.example.webservice.repository.PersonneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,19 +13,13 @@ public class UserDetailsServiceImpl implements UserDetailsService
 {
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
     PersonneRepository personneRepository;
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException //, LoginNotFoundException
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException 
     {
-        //User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User Not Found with -> username  : " + username));
-        //return UserPrinciple.build(user);
-
-        Personne personne = personneRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Personne Not Found with -> username " + username));
+        Personne personne = personneRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Personne Not Found with -> email " + email));
         return UserPrinciple.build(personne);
     }
 }
