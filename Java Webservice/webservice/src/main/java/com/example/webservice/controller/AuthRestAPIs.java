@@ -81,7 +81,6 @@ public class AuthRestAPIs {
         
         if(isEmailAdress(signUpRequest.getEmail()))
         {
-
         if (personneRepository.existsByEmail(signUpRequest.getEmail())) {
             ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
                     " Email is already taken!");
@@ -106,10 +105,12 @@ public class AuthRestAPIs {
                 }
             }
         }
-    }else{
+        }
+        else
+        {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
         " it's not an email!");
-return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signUpRequest.getEmail(), signUpRequest.getPassword()));
@@ -149,6 +150,8 @@ return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }else{
         ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
         " it's not an email!");
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signUpRequest.getEmail(), signUpRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -187,7 +190,8 @@ return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }else{
         ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
         " it's not an email!");
-        
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signUpRequest.getEmail(), signUpRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
