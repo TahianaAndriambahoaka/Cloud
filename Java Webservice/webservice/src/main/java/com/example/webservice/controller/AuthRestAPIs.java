@@ -35,6 +35,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -76,9 +78,13 @@ public class AuthRestAPIs {
 
     @PostMapping("/signupUtilisateur")
     public ResponseEntity<?> signupUtilisateur(@Valid @RequestBody SignUpForm signUpRequest) {
+        
+        if(isEmailAdress(signUpRequest.getEmail()))
+        {
+
         if (personneRepository.existsByEmail(signUpRequest.getEmail())) {
             ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
-                    " Username is already taken!");
+                    " Email is already taken!");
             return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
         } else {
             if (signUpRequest.getPassword().length() < 8) {
@@ -100,6 +106,11 @@ public class AuthRestAPIs {
                 }
             }
         }
+    }else{
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
+        " it's not an email!");
+return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signUpRequest.getEmail(), signUpRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -109,9 +120,11 @@ public class AuthRestAPIs {
 
     @PostMapping("/signupAdmin")
     public ResponseEntity<?> signupAdmin(@Valid @RequestBody SignUpForm signUpRequest) {
+        if(isEmailAdress(signUpRequest.getEmail()))
+        {
         if (personneRepository.existsByEmail(signUpRequest.getEmail())) {
             ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
-                    " Username is already taken!");
+                    " Email is already taken!");
             return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
         } else {
             if (signUpRequest.getPassword().length() < 8) {
@@ -133,6 +146,9 @@ public class AuthRestAPIs {
                 }
             }
         }
+    }else{
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
+        " it's not an email!");
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signUpRequest.getEmail(), signUpRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -142,9 +158,11 @@ public class AuthRestAPIs {
 
     @PostMapping("/signupResponsable")
     public ResponseEntity<?> registerResponsable(@Valid @RequestBody SignUpFormResponsable signUpRequest) {
+        if(isEmailAdress(signUpRequest.getEmail()))
+        {
         if (personneRepository.existsByEmail(signUpRequest.getEmail())) {
             ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
-                    " Username is already taken!");
+                    " Email is already taken!");
             return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
         } else {
             if (signUpRequest.getPassword().length() < 8) {
@@ -166,11 +184,22 @@ public class AuthRestAPIs {
                 }
             }
         }
+    }else{
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
+        " it's not an email!");
+        
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(signUpRequest.getEmail(), signUpRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateJwtToken(authentication);
         return ResponseEntity.ok(new JwtResponse(jwt));
+    }
+
+    public static boolean isEmailAdress(String email)
+    {
+        Pattern p = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$");
+        Matcher m = p.matcher(email.toUpperCase());
+        return m.matches();
     }
 
 }
