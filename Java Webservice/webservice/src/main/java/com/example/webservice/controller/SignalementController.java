@@ -13,6 +13,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -132,9 +133,17 @@ public class SignalementController
 
 	// insert
 	@PostMapping("/signalement")
-	public Signalement createSignalement(@RequestPart Signalement signalement,@RequestPart MultipartFile file) throws Exception 
+	public Signalement createSignalement(@RequestPart Signalement signalement,@Nullable @RequestPart MultipartFile file) throws Exception 
 	{
-		signalement.setPhoto(saveFile(file));
+		if(file!=null)
+		{
+			signalement.setPhoto(saveFile(file));
+		}
+		else 
+		{
+			signalement.setPhoto("default.jpg");
+		}
+		
 		return this.signalementRepository.save(signalement);
 	}
 

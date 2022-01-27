@@ -1,11 +1,11 @@
 ;
 (function() {
 
-    function authInterceptor($window) {
+    function authInterceptor($window) 
+    {
         return {
             request: function(config) {
                 if ($window.localStorage['jwtToken']) {
-
                     config.headers.Authorization = 'Bearer ' + $window.localStorage['jwtToken'];
                 }
                 return config;
@@ -16,17 +16,26 @@
     function myCtrl($window, $scope, $http) 
     {
 
-        $scope.getOneSignalement = function(idSignalement) {
+        $scope.getOneSignalement = function(idSignalement) 
+        {
             console.log("jfsdjkfkasjdfka");
-            $http.get('http://localhost:8072/signalement/' + idSignalement).then(function successCallback(response) {
+            $http.get('http://localhost:8072/signalement/' + idSignalement).then(function successCallback(response) 
+            {
                 var photo = response.data[0][9];
-                // $scope.photo = "storage/" + response.data;
                 document.getElementById("pic-container").innerHTML = "<img src = 'storage/" + photo + "' alt = 'Une erreur s est produite lors du chargement de l image'>";
+            },
+            function errorCallback(response) {
+                if (response.status == 401) { $window.location.href = 'login.html' }
             });
-            $http.get('http://localhost:8072/signalement/' + idSignalement).then(function successCallback(response) {
+
+            $http.get('http://localhost:8072/signalement/' + idSignalement).then(function successCallback(response) 
+            {
                 $scope.oneSignalement = response.data
                 window.localStorage['latitude'] = $scope.oneSignalement[0][7];
                 window.localStorage['longitude'] = $scope.oneSignalement[0][8];
+            },
+            function errorCallback(response) {
+                if (response.status == 401) { $window.location.href = 'login.html' }
             });
         }
         $scope.affecterSignalement = function(idSignalement) {
@@ -45,7 +54,7 @@
                     $scope.listeRegion = response.data
                 },
                 function errorCallback(response) {
-                    console.log(response.status);
+                    if (response.status == 401) { $window.location.href = 'login.html' }
                 });
         }
 
@@ -56,9 +65,9 @@
 
          angular.extend($scope, {
              center: {
-                 lat: -50.933333,
+                 lat: -18.933333,
                  lon: 47.516667,
-                 zoom: 9
+                 zoom: 5
              },
              finisterre: {
                  lat:  window.localStorage['latitude'],
