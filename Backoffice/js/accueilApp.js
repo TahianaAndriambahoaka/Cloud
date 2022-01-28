@@ -21,7 +21,7 @@
         }
 
         $scope.affecterSignalement = function(idSignalement, idRegion) {
-            $http.put('http://localhost:8072/affecterSignalement/' + idSignalement + '/' + idRegion).then(function successCallback(response) {
+            $http.put('http://localhost:8072/v1/affecterSignalement/' + idSignalement + '/' + idRegion).then(function successCallback(response) {
                 console.log(response.data);
             });
         }
@@ -31,7 +31,7 @@
         }
 
         $scope.getListAffectedSignalement = function() {
-            $http.get('http://localhost:8072/listAffectedSignalement').then(function successCallback(response) {
+            $http.get('http://localhost:8072/v1/listAffectedSignalement').then(function successCallback(response) {
                     console.log(response.data)
                     $scope.listAffectedSignalement = response.data;
                 },
@@ -41,7 +41,7 @@
         }
 
         $scope.terminerSignalement = function(id) {
-            $http.put('http://localhost:8072/terminerSignalement/' + id).then(function successCallback(response) {
+            $http.put('http://localhost:8072/v1/terminerSignalement/' + id).then(function successCallback(response) {
                     console.log(response.data);
                 },
                 function errorCallback(response) {
@@ -52,7 +52,7 @@
         $scope.terminerSignalement = function(id) {
             var conf = confirm("Voulez-vous terminer ce signalement?")
             if (conf) {
-                $http.put('http://localhost:8072/terminerSignalement/' + id).then(function successCallback(response) {
+                $http.put('http://localhost:8072/v1/terminerSignalement/' + id).then(function successCallback(response) {
                         $scope.getListAffectedSignalement()
                     },
                     function errorCallback(response) {
@@ -63,7 +63,7 @@
 
         $scope.supprimerSignalement = function(id) 
         {
-            $http.delete('http://localhost:8072/supprimerSignalement/' + id).then(function successCallback(response) {
+            $http.delete('http://localhost:8072/v1/supprimerSignalement/' + id).then(function successCallback(response) {
                     console.log(response.data);
                 },
                 function errorCallback(response) {
@@ -72,7 +72,7 @@
 
             var conf = confirm("Voulez-vous vraiment supprimer ce signalement?")
             if (conf) {
-                $http.delete('http://localhost:8072/supprimerSignalement/' + id).then(function successCallback(response) {
+                $http.delete('http://localhost:8072/v1/supprimerSignalement/' + id).then(function successCallback(response) {
                         $scope.getListAffectedSignalement()
                     },
                     function errorCallback(response) {
@@ -82,7 +82,7 @@
         }
 
         $scope.listNewSignalement = function(id) {
-            $http.get('http://localhost:8072/listNewSignalement').then(function successCallback(response) {
+            $http.get('http://localhost:8072/v1/listNewSignalement').then(function successCallback(response) {
                     console.log(response.data);
                     $scope.listNewSignalement = response.data;
                 },
@@ -92,7 +92,7 @@
         }
 
         $scope.listAffectedSignalement = function(id) {
-            $http.get('http://localhost:8072/listAffectedSignalement').then(function successCallback(response) {
+            $http.get('http://localhost:8072/v1/listAffectedSignalement').then(function successCallback(response) {
                     console.log(response.data)
                     $scope.listAffectedSignalement = response.data;
                 },
@@ -102,7 +102,7 @@
         }
 
         $scope.listRegions = function(id) {
-            $http.get('http://localhost:8072/regions').then(function successCallback(response) {
+            $http.get('http://localhost:8072/v1/regions').then(function successCallback(response) {
                     console.log(response.data)
                 },
                 function errorCallback(response) {
@@ -111,7 +111,7 @@
         }
 
         $scope.insertRegion = function(nom) {
-            $http.post('http://localhost:8072/region', { nom: nom }).then(function successCallback(response) {
+            $http.post('http://localhost:8072/v1/region', { nom: nom }).then(function successCallback(response) {
                     console.log(response.data)
                 },
                 function errorCallback(response) {
