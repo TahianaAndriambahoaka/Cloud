@@ -18,28 +18,27 @@
     <script src="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
     <!-- <script src="map/script.js"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.css" />
-    <link rel="stylesheet" href="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.css" />
+    <link rel="stylesheet" href="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.cfile:///C:/Users/P13A-83-Fabruce/Downloads/data.sqlss" />
     <script src="js/ficheApp.js"></script>
 
 </head>
 
 <body>
-    <div class="box" ng-app="myApp" ng-controller="main">
-        <div class="pic-container" id="pic-container"></div>
+    <div class="container" ng-app="myApp" ng-controller="main">
 
-
-
-        <div class="pic-container" style="margin-left: 50%;">
-            <div>
-                <openlayers ol-center="center" height="400px" width="100%">
+        <div class="div1">
+           
+                <openlayers ol-center="center" style="width: 100%;height: 100%;">
                     <ol-marker ol-marker-properties="position" class="hidden"><span></span></ol-marker>
                 </openlayers>
-            </div>
+           
         </div>
 
+           <div class="div2" id="div2"><img src="bg.jpg" style="width: 100%;height: 100%;"></div>
 
 
-        <div class="description ">
+
+        <div class="div3">
             <h4>Region:</h4>
             <p> {{oneSignalement[0][2]}}</p><br>
             <h4>Cordonnées:</h4>
@@ -50,101 +49,18 @@
             <select ng-model="idRegion " id="region ">
                 <option value="{{region.id}} " ng-repeat="region in listeRegion ">{{region.nom}}</option>
             </select>
-            <button ng-click="affecterSignalement(oneSignalement[0][0]) " style="background: gold ;border: 1px solid white; width:100px;height: 25px;margin:2% ">Affecter</button>
+            <button ng-click="affecterSignalement(oneSignalement[0][0]) " style="background: gold ;border: 1px solid gold; width:100px;height: 25px;margin:2%; ">Affecter</button>
         </div>
 
-        <div class="container ">
-            <div class="card ">
-                <div class="face face1 ">
-                    <div class="content ">
-                        <div class="icon ">
-                            <h4 style="text-align:center; font-weight: 600;margin-top: 25%; ">Type</h4>
-                            <i class="fa fa-linkedin-square " aria-hidden="true "></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="face face2 ">
-                    <div class="content ">
-                        <h3>
-                            <a href="https://www.linkedin.com/in/adamdipinto/ " target="_blank ">{{oneSignalement[0][1]}}</a>
-                        </h3>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-            <div class="card ">
-                <div class="face face1 ">
-                    <div class="content ">
-                        <div class="icon ">
-                            <h4 style="text-align:center; font-weight: 600;margin-top: 25%; ">Status</h4>
-                            <i class="fa fa-twitter-square " aria-hidden="true "></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="face face2 ">
-                    <div class="content ">
-                        <h3>
-                            <a href="https://twitter.com/AdamDipinto " target="_blank ">{{oneSignalement[0][3]}}</a>
-                        </h3>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-            <div class="card ">
-                <div class="face face1 ">
-                    <div class="content ">
-                        <div class="icon ">
-                            <h4 style="text-align:center; font-weight: 600;margin-top: 25%; ">Date</h4>
-                            <i class="fa fa-github-square " aria-hidden="true "></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="face face2 ">
-                    <div class="content ">
-                        <h3>
-                            <a href="https://github.com/atom888 " target="_blank ">{{oneSignalement[0][4]}}</a>
-                        </h3>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+       
 
     </div>
 
 
+
     <!-- div carte -->
 
-    <script>
-        /*var app = angular.module("demoapp", ["openlayers-directive"]);
-
-                                        app.controller("DemoController", ['$scope', function($scope) {
-                                            $scope.showDetails = function(id) {
-                                                alert('lat: ' + id.lat + ', ' + 'lon: ' + id.lon);
-                                            };
-                                            angular.extend($scope, {
-                                                center: {
-                                                    lat: -18.933333,
-                                                    lon: 47.516667,
-                                                    zoom: 9
-                                                },
-                                                finisterre: {
-                                                    lat: -18.933333,
-                                                    lon: 47.516667,
-                                                    label: {
-                                                        show: false
-                                                    },
-                                                    onClick: function(event, properties) {
-                                                        alert('lat: ' + properties.lat + ', ' + 'lon: ' + properties.lon);
-                                                    }
-                                                }
-                                            });
-
-                                        }]);*/
-    </script>
-    <!-- fin div carte -->
+    
 </body>
 
 </html>

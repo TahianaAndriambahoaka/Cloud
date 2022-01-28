@@ -22,7 +22,7 @@
                 $scope.oneSignalement = response.data
                 $scope.position.lat = $scope.oneSignalement[0][7];
                 $scope.position.lon = $scope.oneSignalement[0][8];
-                document.getElementById("pic-container").innerHTML = "<img src = 'storage/" + $scope.oneSignalement[0][9] + "' alt = 'Une erreur s est produite lors du chargement de l image'>";
+                document.getElementById("div1").innerHTML = "<img src = 'storage/" + $scope.oneSignalement[0][9] + "' alt = 'Une erreur s est produite lors du chargement de l image'>";
             },function errorCallback(response) { if (response.status == 401) { $window.location.href = 'login.html' } });
         }
 
