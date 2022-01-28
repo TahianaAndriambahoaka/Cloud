@@ -17,12 +17,14 @@
 
         $scope.getOneSignalement = function(idSignalement) 
         {
+           
             $http.get('http://localhost:8072/v1/signalement/' + idSignalement).then(function successCallback(response) 
             {
                 $scope.oneSignalement = response.data
-                $scope.position.lat = $scope.oneSignalement[0][7];
-                $scope.position.lon = $scope.oneSignalement[0][8];
-                document.getElementById("div1").innerHTML = "<img src = 'storage/" + $scope.oneSignalement[0][9] + "' alt = 'Une erreur s est produite lors du chargement de l image'>";
+                console.log($scope.oneSignalement);
+                $scope.position.lat = $scope.oneSignalement[0][6];
+                $scope.position.lon = $scope.oneSignalement[0][7];
+                document.getElementById("div2").innerHTML = "<img src = 'storage/" + $scope.oneSignalement[0][8] + "' alt = 'Une erreur s est produite lors du chargement de l image' style='width: 100%;height: 100%;' >";
             },function errorCallback(response) { if (response.status == 401) { $window.location.href = 'login.html' } });
         }
 

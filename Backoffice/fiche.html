@@ -1,65 +1,50 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fiche</title>
+        <link rel="stylesheet" type="text/css" href="css/fiche.css">
+        <script src="js/angular.min.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/ui-leaflet.min.js"></script>
+        <script src="js/ui-leaflet-layers.min.js"></script>
+        <script src="js/angular-leaflet-directive.min.js"></script>
+        <script src="js/ol.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.0/angular-sanitize.min.js"></script>
+        <script src="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.css" />
+        <script src="js/ficheApp.js"></script>
+    </head>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fiche</title>
-    <link rel="stylesheet" type="text/css" href="css/fiche.css">
-    <script src="js/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ui-leaflet/1.0.3/ui-leaflet.min.js"></script>
-    <script src="https://unpkg.com/ui-leaflet-layers@0.1.3/dist/ui-leaflet-layers.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-leaflet-directive/0.10.0/angular-leaflet-directive.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.js"></script>
-    <!-- <script src="https://code.angularjs.org/1.4.0/angular.min.js"></script> -->
-    <script src="https://code.angularjs.org/1.4.0/angular-sanitize.min.js"></script>
-    <script src="http://tombatossals.github.io/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
-    <!-- <script src="map/script.js"></script> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.7.0/ol.min.css" />
-    <script src="js/ficheApp.js"></script>
-
-</head>
-
-<body>
-    <div class="container" ng-app="myApp" ng-controller="main">
-
-        <div class="div1">
-           
+    <body>
+        <div class="container" ng-app="myApp" ng-controller="main">
+            <div class="div1">
                 <openlayers ol-center="center" style="width: 100%;height: 100%;">
                     <ol-marker ol-marker-properties="position" class="hidden"><span></span></ol-marker>
                 </openlayers>
-           
+            </div>
+            <div class="div2" id="div2">
+                <img src="bg.jpg" style="width: 100%;height: 100%;">
+            </div>
+            <div class="div3">
+                <h1>Status:</h1>
+                <p> {{oneSignalement[0][2]}}</p><br>
+                <h1>Cordonnées:</h1>
+                <p>Latitude: {{oneSignalement[0][6]}}</p>
+                <p>Longitude: {{oneSignalement[0][7]}}</p>
+                <br>
+                <h1>Type:</h1>
+                <p> {{oneSignalement[0][1]}}</p><br>
+                <h1>Date:</h1>
+                <p> {{oneSignalement[0][3]}}</p><br>
+                <br>
+                <label for="region "><h1>Region</h1></label>
+                <select ng-model="idRegion " id="region ">
+                    <option value="{{region.id}} " ng-repeat="region in listeRegion ">{{region.nom}}</option>
+                </select>
+                <button ng-click="affecterSignalement(oneSignalement[0][0]) " style="background: gold ;border: 1px solid gold; width:100px;height: 25px;margin:2%; "><h4>Affecter</h4></button>
+            </div>
         </div>
-
-           <div class="div2" id="div2"><img src="bg.jpg" style="width: 100%;height: 100%;"></div>
-
-
-
-        <div class="div3">
-            <h4>Region:</h4>
-            <p> {{oneSignalement[0][2]}}</p><br>
-            <h4>Cordonnées:</h4>
-            <p>Latitude: {{oneSignalement[0][7]}}</p>
-            <p>Longitude: {{oneSignalement[0][8]}}</p>
-            <br>
-            <label for="region ">Region</label>
-            <select ng-model="idRegion " id="region ">
-                <option value="{{region.id}} " ng-repeat="region in listeRegion ">{{region.nom}}</option>
-            </select>
-            <button ng-click="affecterSignalement(oneSignalement[0][0]) " style="background: gold ;border: 1px solid gold; width:100px;height: 25px;margin:2%; ">Affecter</button>
-        </div>
-
-       
-
-    </div>
-
-
-
-    <!-- div carte -->
-
-    
-</body>
-
+    </body>
 </html>

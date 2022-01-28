@@ -30,11 +30,20 @@ p{
 .div2 { grid-area: div2; 
  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
             0 10px 10px rgba(0,0,0,0.22);}
+
 .div3 { grid-area: div3;
     padding: 5%;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
             0 10px 10px rgba(0,0,0,0.22);
                 background: linear-gradient(to right, #FF4B2B, #FF416C);
+
+ }
+
+ .div4 { grid-area: div4;
+    padding: 5%;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
+                background: linear-gradient(to right, #642bff, #FF416C);
 
  }
 
