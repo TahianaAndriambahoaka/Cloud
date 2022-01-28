@@ -14,7 +14,7 @@ import com.example.webservice.model.*;
 import com.example.webservice.repository.AdminRepository;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/v1")
 public class AdminController 
 {
     @Autowired

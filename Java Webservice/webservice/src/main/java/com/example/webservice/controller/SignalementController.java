@@ -34,7 +34,7 @@ import com.example.webservice.model.Signalement;
 import com.example.webservice.repository.SignalementRepository;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/v1")
 public class SignalementController 
 {
 

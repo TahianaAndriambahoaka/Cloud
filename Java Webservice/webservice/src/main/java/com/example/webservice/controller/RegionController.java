@@ -22,7 +22,7 @@ import com.example.webservice.model.Region;
 import com.example.webservice.repository.RegionRepository;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/v1")
 public class RegionController {
 	@Autowired
     private RegionRepository regionRepository;

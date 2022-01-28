@@ -14,7 +14,7 @@ import com.example.webservice.model.ResponsableRegion;
 import com.example.webservice.repository.ResponsableRegionRepository;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/v1")
 public class ResponsableRegionController {
 	@Autowired
     private ResponsableRegionRepository responsableRegionRepository;

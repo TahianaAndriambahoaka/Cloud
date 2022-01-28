@@ -12,7 +12,7 @@ import com.example.webservice.model.Utilisateur;
 import com.example.webservice.repository.UtilisateurRepository;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/v1")
 public class UtilisateurController {
 	@Autowired
     private UtilisateurRepository utilisateurRepository;

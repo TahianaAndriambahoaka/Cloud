@@ -36,7 +36,7 @@ import com.example.webservice.repository.PhotoRepository;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/v1")
 public class PhotoController {
 
 	private String uploadLocation = "Java Webservice/upload";

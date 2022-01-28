@@ -22,7 +22,7 @@ import com.example.webservice.model.Type;
 import com.example.webservice.repository.TypeRepository;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/v1")
 public class TypeController {
 	@Autowired
     private TypeRepository typeRepository;

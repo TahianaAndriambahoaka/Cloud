@@ -12,7 +12,7 @@ import com.example.webservice.model.Personne;
 import com.example.webservice.repository.PersonneRepository;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/v1")
 public class PersonneController 
 {
 	@Autowired
