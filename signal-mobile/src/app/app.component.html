@@ -1,0 +1,78 @@
+<ion-app>
+  <ion-menu contentId="menu-content" menuId="menu-content" side="start" type="overlay">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Profile</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content >
+      <ion-grid class="main-header" fixed>
+        <div align="center">
+          <ion-list class="main-header">
+            <ion-avatar>
+              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>            
+          </ion-list>
+        </div>
+      </ion-grid>
+
+      <ion-row class="ion-padding-horizontal">
+        <ion-col size="6">
+          <ion-item lines="none" class="ion-text-center">
+            <ion-icon  name="water" color="primary"></ion-icon>
+            <ion-label>14<p>hghg</p></ion-label>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item lines="none" class="ion-text-center">
+            <ion-icon  name="trophy" color="primary"></ion-icon>
+            <ion-label>14<p>hghg</p></ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-list>
+        <ion-item>
+          <ion-label>
+           <ion-text>
+             First name
+           </ion-text>
+           <p><ion-text color="dark">Rakotonjanahary</ion-text></p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+           <ion-text>
+            Last name
+           </ion-text>
+           <p><ion-text color="dark">Tsantaniaina</ion-text></p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+           <ion-text>
+             Login
+           </ion-text>
+           <p><ion-text color="dark">moka</ion-text></p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+           <ion-text>
+             mdp
+           </ion-text>
+           <p><ion-text color="dark">*******</ion-text></p>
+          </ion-label>
+        </ion-item>
+
+
+      </ion-list>
+     
+      
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="menu-content"></ion-router-outlet>
+</ion-app>

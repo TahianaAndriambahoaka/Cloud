@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>inscription</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="margin: 10%;">
+
+    <h3 style="font-size: xx-large; font-weight: bold; text-align: center;">Page d'inscription</h3><br>
+
+    <ion-item style="margin-left: -4%; margin-right: 2%;">
+      <ion-label position="stacked" style="font-size: large;">Nom</ion-label>
+      <ion-input placeholder="Nom"></ion-input>
+    </ion-item><br>
+
+    <ion-item style="margin-left: -4%; margin-right: 2%;">
+      <ion-label position="stacked" style="font-size: large;">Prénom</ion-label>
+      <ion-input placeholder="Prénom"></ion-input>
+    </ion-item><br>
+
+    <ion-item style="margin-left: -4%; margin-right: 2%;">
+      <ion-label position="stacked" style="font-size: large;">Date de naissance</ion-label>
+      <ion-datetime 
+        displayFormat="MM/DD/YYYY" 
+        max="2011-12-31"
+        presentation="date">
+      </ion-datetime>
+    </ion-item><br>
+
+    <ion-item style="margin-left: -4%; margin-right: 2%;">
+      <ion-label position="stacked" style="font-size: large;">Login</ion-label>
+      <ion-input placeholder="Login"></ion-input>
+    </ion-item><br>
+
+    <ion-item style="margin-left: -4%; margin-right: 2%;">
+      <ion-label position="stacked" style="font-size: large;">Mot de passe</ion-label>
+      <ion-input placeholder="Mot de passe"></ion-input>
+    </ion-item><br>
+
+    <ion-item style="margin-left: -4%; margin-right: 2%;">
+      <ion-label position="stacked" style="font-size: large;">Confirmez votre mot de passe</ion-label>
+      <ion-input placeholder="Confirmez votre mot de passe"></ion-input>
+    </ion-item><br>
+
+    <ion-button expand="block" (click)="inscription()">S'inscrire</ion-button>
+
+  </div>
+</ion-content>
