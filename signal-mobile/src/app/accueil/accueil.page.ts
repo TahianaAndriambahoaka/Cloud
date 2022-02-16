@@ -1,5 +1,5 @@
 import { observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, Directive, OnInit, Pipe } from '@angular/core';
 import { MenuController, ModalController, Platform } from '@ionic/angular';
 import { Camera,CameraResultType,CameraSource,Photo } from '@capacitor/camera';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,6 +8,7 @@ import { $ } from 'protractor';
 import { LoadingController } from '@ionic/angular';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { take, finalize } from 'rxjs/operators';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 const IMAGE_DIR = 'stored-images';
 
@@ -23,7 +24,8 @@ export class AccueilPage implements OnInit {
 
   images : LocalFile [] = [];
 
-  constructor(private menu:MenuController,private modalCtrl:ModalController,private platform : Platform , private LoadingCtrl: LoadingController,private http: HttpClient ) { }
+  
+  constructor(private menu:MenuController,private modalCtrl:ModalController,private platform : Platform , private LoadingCtrl: LoadingController,private http: HttpClient , private geolocation: Geolocation) { }
   
   async ngOnInit() {
     this.loadFiles();
@@ -147,21 +149,23 @@ export class AccueilPage implements OnInit {
 
     async startUpload(file: LocalFile)
     {
-      const response = await fetch(file.data);
-      const blob = await response.blob();
-      const formData = new FormData();
-      formData.append('file',blob,file.name);
-      var debug = {};
-      var blobine = new Blob([JSON.stringify(debug,null,2)],{type : 'application/json'});
-      formData.append('signalement',blobine);
-      this.uploadData(formData);
+          const response = await fetch(file.data);
+          const blob = await response.blob();
+
+      this.geolocation.getCurrentPosition().then((resp) => {
+          const formData = new FormData();
+          formData.append('file',blob,file.name);
+          var debug = {longitude:resp.coords.longitude,latitude:resp.coords.latitude};
+          var blobine = new Blob([JSON.stringify(debug,null,2)],{type : 'application/json'});
+          formData.append('signalement',blobine);
+          this.uploadData(formData);
+      }).catch((error) => { console.log('Error getting location', error); });
+
     }
 
     async uploadData(formData: FormData)
     {
-      const loading = await this.LoadingCtrl.create({
-        message : 'Uploading image .....',
-      });
+      const loading = await this.LoadingCtrl.create({  message : 'Uploading image .....', });
       await loading.present();
       const url = 'http://localhost:8072/v1/signalement';
       const myheader = new HttpHeaders().set('Authorization','Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2JpbGVAbW9iaWxlLmNvbSIsImlhdCI6MTY0NTAwNzIzNiwiZXhwIjoxNjQ1MDkzNjM2fQ.XTX77RPD2NMECUVvZ13K7R1skcyPl76Yko8OhFHvTfaU107ibXu-jXUzkaBMKWMSEyKSIzxV3l5qbT4DndglBQ')//.set('Content-type','application/json')
