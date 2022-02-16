@@ -1,7 +1,8 @@
 {
   "name": "signalMobile",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

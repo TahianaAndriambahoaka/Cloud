@@ -1,70 +1,90 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>accueil</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>accueil</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="openSideNav()" expand="block" fill="clear" shape="round">
-    <ion-icon slot="start" name="person-circle"></ion-icon>
-  </ion-button>
+    <ion-button (click)="openSideNav()" expand="block" fill="clear" shape="round">
+        <ion-icon slot="start" name="person-circle"></ion-icon>
+    </ion-button>
 
-  <ion-button  expand="block" fill="clear" shape="round">
-    <ion-icon slot="end" name="notifications-outline"></ion-icon>
-    <ion-badge color="danger">3</ion-badge>
-  </ion-button>
-
-
-
-<!-- fab placed to the (vertical) center and end -->
-<ion-fab vertical="center" horizontal="end" slot="fixed">
-  <ion-fab-button  id="trigger-button">
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
-</ion-fab>
-
-  <ion-modal trigger="trigger-button">
-    <ng-template>
-      <ion-content>
-        <ion-button (click)="modalClose()" expand="block" fill="clear" shape="round">
-          Close
-        </ion-button>
+    <ion-button expand="block" fill="clear" shape="round">
+        <ion-icon slot="end" name="notifications-outline"></ion-icon>
+        <ion-badge color="danger">3</ion-badge>
+    </ion-button>
 
 
-        <ion-card>
-          <img src="./madison.jpg" />
-          <ion-card-header>
-            <ion-card-title>Card Title</ion-card-title>
-            <ion-list lines="full" class="ion-no-margin">
-              <ion-list-header lines="full">
-                <ion-label> Input Types </ion-label>
-              </ion-list-header>
-    
-            
-              <ion-item>
-                <ion-label position="stacked">Textarea</ion-label>
-                <ion-textarea placeholder="placeholder"></ion-textarea>
-              </ion-item>
+
+    <!-- fab placed to the (vertical) center and end -->
+    <ion-fab vertical="center" horizontal="end" slot="fixed">
+        <ion-fab-button id="trigger-button">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-modal trigger="trigger-button">
+        <ng-template>
+            <ion-content>
+                <ion-button (click)="modalClose()" expand="block" fill="clear" shape="round">
+                    Close
+                </ion-button>
+
+                <ion-card>
+                    <img src="./madison.jpg" />
+                    <ion-card-header>
+                        <ion-card-title>Card Title</ion-card-title>
+                        <ion-list lines="full" class="ion-no-margin">
+                            <ion-list-header lines="full">
+                                <ion-label> Input Types </ion-label>
+                            </ion-list-header>
 
 
-            </ion-list>
-          </ion-card-header>
-        
-          <ion-card-content>
-            <div align="center" >
-              <ion-icon name="camera-outline"></ion-icon>
-              <ion-button expand="block" fill="clear" shape="round">
-                Send
-              </ion-button>
-            </div>
-          </ion-card-content>
-        </ion-card>
-        
+                            <ion-item>
+                                <ion-label position="stacked">Textarea</ion-label>
+                                <ion-textarea placeholder="placeholder"></ion-textarea>
+                            </ion-item>
 
-      </ion-content>
-    </ng-template>
-  </ion-modal>
 
-  
+                        </ion-list>
+                    </ion-card-header>
+
+                    <ion-card-content>
+                        <div align="center">
+                            <ion-icon name="camera-outline"></ion-icon>
+                            <ion-button expand="block" fill="clear" shape="round" (click)="selectImage()">
+                                Send
+                            </ion-button>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+
+                <h3 *ngIf="images.length == 0 " class="ion-padding ion-text-center"> Please Select Image!</h3>
+
+                <ion-list>
+                    <ion-item *ngFor="let file of images ; let i = index ">
+                        <ion-thumbnail slot="start">
+                            <ion-img [src]="file.data"></ion-img>
+                        </ion-thumbnail>
+
+                        <ion-label class="ion-text-wrap">
+                            {{file.name}}
+                        </ion-label>
+
+                        <ion-button slot="end" fill="clear" (click)="startUpload(file)">
+                            <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+                        </ion-button>
+
+                        <ion-button slot="end" fill="clear" (click)="deleteImage(file)">
+                            <ion-icon slot="icon-only" name="trash"></ion-icon>
+                        </ion-button>
+                    </ion-item>
+                </ion-list>
+
+            </ion-content>
+        </ng-template>
+    </ion-modal>
+
+
 
 </ion-content>
