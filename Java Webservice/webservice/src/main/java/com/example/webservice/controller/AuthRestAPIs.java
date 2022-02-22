@@ -187,7 +187,9 @@ public class AuthRestAPIs {
                 }
             }
         }
-    }else{
+    }
+    else
+    {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
         " it's not an email!");
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);

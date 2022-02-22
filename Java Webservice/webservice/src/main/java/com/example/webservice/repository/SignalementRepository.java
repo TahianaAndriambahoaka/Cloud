@@ -27,6 +27,9 @@ public interface SignalementRepository extends JpaRepository<Signalement, Long>
 	@Query(value="select signalement.id as id,region.nom as nomRegion,type.nom as nomType,status,dateHeure,description,idUtilisateur from Signalement join region on region.id = Signalement.idRegion join type on type.id = Signalement.idType where status = 'termine'",nativeQuery= true)
 	List<List<Object>> getListNotification();
 
+	@Query(value=" select signalement.id,type.id as idtype,region.id as idRegion,signalement.dateheure,signalement.description,signalement.latitude,signalement.longitude,signalement.photo,signalement.status,signalement.idUtilisateur from signalement join type on type.id = signalement.idType join region on region.id = signalement.idregion join responsable_region on region.id = responsable_region.idregion join personne on personne.id = responsable_region.idPersonne where idPersonne = ?1 ",nativeQuery= true)
+	List<List<Object>> getListByResponsable(Long id);
+
 	void deleteById(long id);
 
 	List<Signalement> findByIdRegion(long idRegion);

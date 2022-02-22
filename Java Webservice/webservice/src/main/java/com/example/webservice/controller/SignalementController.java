@@ -77,6 +77,12 @@ public class SignalementController
 		return this.signalementRepository.findAffectedSignalement();
 	}
 
+	@GetMapping("/listByResponsable/{idPersonne}")
+	public List<List<Object>> getListByResponsable(@PathVariable(value = "idPersonne") Long idPersonne) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsable(idPersonne);
+	}
+
 	// Affecter un signalement
 	@PutMapping("/affecterSignalement/{idSignalement}/{idRegion}")
 	public void affecterSignalement(@PathVariable(value = "idSignalement") Long idSignalement,@PathVariable(value = "idRegion") Integer idRegion) 

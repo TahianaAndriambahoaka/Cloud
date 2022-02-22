@@ -1,7 +1,7 @@
-;
-(function() {
-
-    function authInterceptor($window) {
+;(function() 
+{
+    function authInterceptor($window) 
+    {
         return {
             request: function(config) {
                 if ($window.localStorage['jwtToken']) {
