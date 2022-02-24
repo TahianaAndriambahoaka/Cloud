@@ -1,7 +1,8 @@
 import { observable } from 'rxjs';
 import { Component, Directive, OnInit, Pipe } from '@angular/core';
 import { MenuController, ModalController, Platform } from '@ionic/angular';
-import { Camera,CameraResultType,CameraSource,Photo } from '@capacitor/camera';
+// import { Camera,CameraResultType,CameraSource,Photo } from '@capacitor/camera';
+import { CameraResultType,CameraSource,Photo } from '@capacitor/camera';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http';
 import { $ } from 'protractor';
@@ -9,6 +10,8 @@ import { LoadingController } from '@ionic/angular';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { take, finalize } from 'rxjs/operators';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+
+import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 
 const IMAGE_DIR = 'stored-images';
 
@@ -23,9 +26,10 @@ interface LocalFile {
 export class AccueilPage implements OnInit {
 
   images : LocalFile [] = [];
+  imgURL;
 
   
-  constructor(private menu:MenuController,private modalCtrl:ModalController,private platform : Platform , private LoadingCtrl: LoadingController,private http: HttpClient , private geolocation: Geolocation) { }
+  constructor(private menu:MenuController,private modalCtrl:ModalController,private platform : Platform , private LoadingCtrl: LoadingController,private http: HttpClient , private geolocation: Geolocation, private camera:Camera) { }
   
   async ngOnInit() {
     this.loadFiles();
@@ -89,36 +93,36 @@ export class AccueilPage implements OnInit {
   }
 
 
-  async selectImage() 
-  {
-    const image = await Camera.getPhoto({
-        quality : 90,
-        allowEditing : false ,
-        resultType : CameraResultType.Uri,
-        source : CameraSource.Camera
-    });
-    console.log(image);
+  // async selectImage($event) 
+  // {
+  //   const image = await Camera.getPhoto({
+  //       quality : 90,
+  //       allowEditing : true ,
+  //       resultType : CameraResultType.DataUrl//,
+  //       // source : CameraSource.Camera
+  //   });
+  //   console.log(image);
 
-    if(image)
-    {
-      this.saveImage(image);
-    }
-  }
+  //   if(image)
+  //   {
+  //     this.saveImage(image);
+  //   }
+  // }
 
-  async saveImage(photo: Photo)
-  {
-      const base64Data = await this.readAsBase64(photo);
-      console.log(base64Data);
-      const fileName = new Date().getTime() + '.jpeg';
-      const savedFile = await Filesystem.writeFile(
-      {
-          directory: Directory.Data,
-          path : `${IMAGE_DIR}/${fileName}`,
-          data : base64Data
-      });
-      console.log('saved: ',savedFile);
-      this.loadFiles();
-  }
+  // async saveImage(photo: Photo)
+  // {
+  //     const base64Data = await this.readAsBase64(photo);
+  //     console.log(base64Data);
+  //     const fileName = new Date().getTime() + '.jpeg';
+  //     const savedFile = await Filesystem.writeFile(
+  //     {
+  //         directory: Directory.Data,
+  //         path : `${IMAGE_DIR}/${fileName}`,
+  //         data : base64Data
+  //     });
+  //     console.log('saved: ',savedFile);
+  //     this.loadFiles();
+  // }
 
   async readAsBase64(photo: Photo)
   {
@@ -159,6 +163,7 @@ export class AccueilPage implements OnInit {
           var blobine = new Blob([JSON.stringify(debug,null,2)],{type : 'application/json'});
           formData.append('signalement',blobine);
           this.uploadData(formData);
+          console.log("///////////////////////////////////////////////////////////");
       }).catch((error) => { console.log('Error getting location', error); });
 
     }
@@ -168,7 +173,7 @@ export class AccueilPage implements OnInit {
       const loading = await this.LoadingCtrl.create({  message : 'Uploading image .....', });
       await loading.present();
       const url = 'http://localhost:8072/v1/signalement';
-      const myheader = new HttpHeaders().set('Authorization','Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2JpbGVAbW9iaWxlLmNvbSIsImlhdCI6MTY0NTAwNzIzNiwiZXhwIjoxNjQ1MDkzNjM2fQ.XTX77RPD2NMECUVvZ13K7R1skcyPl76Yko8OhFHvTfaU107ibXu-jXUzkaBMKWMSEyKSIzxV3l5qbT4DndglBQ')//.set('Content-type','application/json')
+      const myheader = new HttpHeaders().set('Authorization','Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2JpbGVAZ21haWwuY29tIiwiaWF0IjoxNjQ1NTQ3NDk4LCJleHAiOjE2NDU2MzM4OTh9.2T6Zr1EURLiFS6KRbEMRJDCVLrb0Er0QKn5IpQrY3DXZ9WOTMgyvyMEGAv5I69pVTzToEOHUVKkGxzPNPzCjZw')//.set('Content-type','application/json')
       this.http.post(url, formData,{headers: myheader}).pipe( finalize (() => { loading.dismiss(); })).subscribe(res => { console.log(res); })
     }
 
@@ -179,6 +184,45 @@ export class AccueilPage implements OnInit {
         path: file.path
       });
       this.loadFiles();
+    }
+
+
+    async saveImage(base64Data)
+  {
+      console.log(base64Data);
+      const fileName = new Date().getTime() + '.jpeg';
+      const savedFile = await Filesystem.writeFile(
+      {
+          directory: Directory.Data,
+          path : `${IMAGE_DIR}/${fileName}`,
+          data : base64Data
+      });
+      console.log('saved: ',savedFile);
+      this.loadFiles();
+  }
+
+    getCamera(){
+      this.camera.getPicture({
+        sourceType:this.camera.PictureSourceType.CAMERA,
+        destinationType: this.camera.DestinationType.FILE_URI
+      }).then((res)=>{
+        this.saveImage(res);
+        console.log(res);
+      }).catch(e=>{
+        console.log(e);
+      })
+    }
+
+    getGalery(){
+      this.camera.getPicture({
+        sourceType:this.camera.PictureSourceType.PHOTOLIBRARY,
+        destinationType: this.camera.DestinationType.DATA_URL
+      }).then((res)=>{
+        this.saveImage(res);
+        console.log(res);
+      }).catch(e=>{
+        console.log(e);
+      })
     }
 
 }
