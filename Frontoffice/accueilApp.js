@@ -26,6 +26,7 @@
             $scope.typenames = tab;
         },function errorCallback(response) { if (response.status == 401) { $window.location.href = 'login.html' } });
 
+        var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 });
         $scope.print = function()
         {
             map.remove();
@@ -35,10 +36,12 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsable/' + response.data.id).then(function successCallback(res) 
                     { 
-                        var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 });
+                         $scope.value =  res.data;
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                         $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -71,10 +74,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableStatus/' + response.data.id + '/'+status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -107,10 +111,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableDatemax/' + response.data.id + '/' + datemax).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -143,10 +148,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableDatemin/' + response.data.id + '/' + datemin).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -179,10 +185,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableType/' + response.data.id + '/' + type).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -215,10 +222,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableDatemaxStatus/' + response.data.id + '/' + datemax + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -251,10 +259,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableDateminStatus/' + response.data.id + '/' + datemin + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -287,10 +296,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableTypeStatus/' + response.data.id +'/'+ type + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -323,10 +333,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableTypeDatemax/' + response.data.id + '/' + type + '/' + datemax).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -359,10 +370,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableDateminDatemax/' + response.data.id + '/' + datemin + '/' + datemax ).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -395,10 +407,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableTypeDatemin/' + response.data.id + '/'+ type +'/'+datemin).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -431,10 +444,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableDateminDatemaxStatus/' + response.data.id + '/' + datemin + '/' + datemax + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                         $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -467,10 +481,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableTypeDatemaxStatus/' + response.data.id +'/'+type + '/' + datemax + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -503,10 +518,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableTypeDateminStatus/' + response.data.id + '/' + type + '/' + datemin + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -539,10 +555,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableTypeDateminDatemax/' + response.data.id + '/' + type + '/' + datemin + '/' + datemax).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                        $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {
@@ -575,10 +592,11 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                     console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsableTypeDateminDatemaxStatus/' + response.data.id + '/' + type + '/' + datemin + '/' + datemax + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
-                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '<h1>Signalemetn</h1>' }).addTo(map);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                         $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)
                         {

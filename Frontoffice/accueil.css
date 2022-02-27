@@ -9,7 +9,7 @@ body
 }
 
 .container {
-  display: flex;
+  display:flex;
   height: 90vh;
 }
 
@@ -21,6 +21,19 @@ body
   flex-direction: column;
   justify-content: center;
   animation-name: left;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
+}
+
+.result
+{
+  overflow: hidden;
+  display: grid;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  animation-name: middle;
   animation-duration: 1s;
   animation-fill-mode: both;
   animation-delay: 1s;
@@ -128,6 +141,20 @@ body
 }
 
 @keyframes left {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+
+  100% {
+    opacity: 1;
+    padding: 20px 40px;
+    width: 500px;
+  }
+}
+
+
+@keyframes middle {
   0% {
     opacity: 0;
     width: 0;
