@@ -177,7 +177,6 @@ public class SignalementController
 		return this.signalementRepository.getListByResponsableTypeDateminDatemaxStatus(idPersonne,type,new SimpleDateFormat("yyyy-MM-dd").parse(datemin),new SimpleDateFormat("yyyy-MM-dd").parse(datemax),status);
 	}
 
-
 	// Affecter un signalement
 	@PutMapping("/affecterSignalement/{idSignalement}/{idRegion}")
 	public void affecterSignalement(@PathVariable(value = "idSignalement") Long idSignalement,@PathVariable(value = "idRegion") Integer idRegion) 
