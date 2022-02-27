@@ -1,29 +1,35 @@
 <style>
-  .hr {
-    border-bottom: 1px solid #ccc;
-    margin: 10px 0;
-    width: 45%;
-  }
+    .hr {
+        border-bottom: 1px solid #ccc;
+        margin: 10px 0;
+        width: 45%;
+    }
 </style>
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>login</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <img src="assets/temp-logo.jpg" alt="logo">
-  <div style="margin: 10%;">
-    <ion-item style="margin-left: -4%; margin-right: 2%;">
-      <ion-input placeholder="Login"></ion-input>
-    </ion-item><br>
-    <ion-item style="margin-left: -4%; margin-right: 2%;">
-      <ion-input placeholder="Mot de passe"></ion-input>
-    </ion-item><br>
-    <ion-button expand="block" (click)="connecter()" >Se connecter</ion-button><br>
-    <div class="hr" style="float: left;"></div>
-    <div style="width: 10%; text-align: center; float: left;"> ou </div>
-    <div class="hr" style="float: right;"></div><br><br>
-    <ion-button color="success" expand="block" style="width: 80%; margin-left: 10%;" (click)="inscription()">Créer un nouveau compte</ion-button>
-  </div>
+<ion-content style="text-align:center">
+    <!-- <img src="assets/temp-logo.jpg" alt="logo"> -->
+    <img src="assets/logo.png" width="20%">
+    <div style="margin: 10%;">
+ <form #userlogin = "ngForm" (ngSubmit) = "login(userlogin.value)" >
+
+        <ion-item style="margin-left: -4%; margin-right: 2%;">
+            <ion-input placeholder="Email" type="text" name="email" ngModel></ion-input>
+        </ion-item><br>
+        <ion-item style="margin-left: -4%; margin-right: 2%;">
+            <ion-input placeholder="Mot de passe" type="password" name="mdp" ngModel></ion-input>
+        </ion-item><br>
+        <ion-button expand="block" type="submit">Se connecter</ion-button><br>
+        <ion-label *ngIf="message">{{message}}</ion-label>
+        <div class="hr" style="float: left;"></div>
+        <div style="width: 10%; text-align: center; float: left;"> ou </div>
+        <div class="hr" style="float: right;"></div><br><br>
+        
+  </form>
+  <ion-button color="success" expand="block" style="width: 80%; margin-left: 10%;" (click)="inscription()">Créer un nouveau compte</ion-button>
+    </div>
 </ion-content>

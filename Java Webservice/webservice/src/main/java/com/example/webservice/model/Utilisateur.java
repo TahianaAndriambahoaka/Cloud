@@ -19,6 +19,8 @@ public class Utilisateur
 	private long idPersonne;
 
 
+	public Utilisateur(){}
+
 	public Utilisateur(long idPersonne)
 	{
 		this.idPersonne = idPersonne;

@@ -8,15 +8,16 @@
   <div style="margin: 10%;">
 
     <h3 style="font-size: xx-large; font-weight: bold; text-align: center;">Page d'inscription</h3><br>
+<form #userlogin = "ngForm" (ngSubmit) = "inscription(userlogin.value)" >
 
     <ion-item style="margin-left: -4%; margin-right: 2%;">
       <ion-label position="stacked" style="font-size: large;">Nom</ion-label>
-      <ion-input placeholder="Nom"></ion-input>
+      <ion-input placeholder="Nom" type="text" name="nom" ngModel></ion-input>
     </ion-item><br>
 
     <ion-item style="margin-left: -4%; margin-right: 2%;">
       <ion-label position="stacked" style="font-size: large;">Prénom</ion-label>
-      <ion-input placeholder="Prénom"></ion-input>
+      <ion-input placeholder="Prénom" type="text" name="prenom" ngModel></ion-input>
     </ion-item><br>
 
     <ion-item style="margin-left: -4%; margin-right: 2%;">
@@ -30,20 +31,22 @@
 
     <ion-item style="margin-left: -4%; margin-right: 2%;">
       <ion-label position="stacked" style="font-size: large;">Login</ion-label>
-      <ion-input placeholder="Login"></ion-input>
+      <ion-input placeholder="Email" type="text" name="email" ngModel></ion-input>
     </ion-item><br>
 
     <ion-item style="margin-left: -4%; margin-right: 2%;">
       <ion-label position="stacked" style="font-size: large;">Mot de passe</ion-label>
-      <ion-input placeholder="Mot de passe"></ion-input>
+      <ion-input placeholder="Mot de passe" type="password" name="mdp" ngModel></ion-input>
     </ion-item><br>
 
     <ion-item style="margin-left: -4%; margin-right: 2%;">
       <ion-label position="stacked" style="font-size: large;">Confirmez votre mot de passe</ion-label>
-      <ion-input placeholder="Confirmez votre mot de passe"></ion-input>
+      <ion-input placeholder="Confirmez votre mot de passe" type="password" name="mdpConfirm" ngModel></ion-input>
     </ion-item><br>
 
-    <ion-button expand="block" (click)="inscription()">S'inscrire</ion-button>
+    <ion-button expand="block" type="submit">S'inscrire</ion-button>
+        <ion-label *ngIf="message">{{message}}</ion-label>
 
+</form>
   </div>
 </ion-content>

@@ -5,19 +5,66 @@
 </ion-header>
 
 <ion-content>
-    <ion-button (click)="openSideNav()" expand="block" fill="clear" shape="round">
-        <ion-icon slot="start" name="person-circle"></ion-icon>
-    </ion-button>
+    <!-- <div style="float:left; width:33%">
+        <ion-button (click)="openSideNav()" expand="block" fill="clear" shape="round">
+            <ion-icon slot="start" name="person-circle"></ion-icon>
+        </ion-button>
+    </div>
+    <div style="float:left; width:33%; text-align: center;">
+        <img src="assets/temp-logo.jpg" alt="logo" width="45px" height="45px">
+    </div>
+    <div style="float:right; width:33%">
+        <ion-button expand="block" fill="clear" shape="round">
+            <ion-icon slot="end" name="notifications-outline"></ion-icon>
+            <ion-badge color="danger">3</ion-badge>
+        </ion-button>
+    </div> -->
 
-    <ion-button expand="block" fill="clear" shape="round">
-        <ion-icon slot="end" name="notifications-outline"></ion-icon>
-        <ion-badge color="danger">3</ion-badge>
-    </ion-button>
 
 
+    <ion-toolbar color="secondary">
+        <ion-buttons slot="secondary">
+            <ion-button (click)="openSideNav()">
+                <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="primary">
+            <ion-button color="light">
+                <ion-icon slot="end" name="notifications-outline"></ion-icon>
+                <ion-badge color="danger">3</ion-badge>
+            </ion-button>
+        </ion-buttons>
+        <ion-title><img src="assets/logo.png" alt="logo" width="45px" height="45px"></ion-title>
+    </ion-toolbar>
+
+    <h3 style="text-align: center; font-weight: 900;">Voici la liste de vos signalements</h3>
+
+    <ion-card>
+        <ion-card-header style="width: 90%; text-align: center;">
+            <img src="assets/avatar.png" width="90%; margin-bottom:10px" position="center">
+        </ion-card-header>
+        <ion-card-content style="border-radius: 10px; background-color: aliceblue; width: 90%; margin-left:5%; margin-right:5%"><br> Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.</ion-card-content>
+        <ion-card-content>
+            <label style="font-weight: bold;">Date: </label>22 Février 2022<br><br>
+            <label style="font-weight: bold;">Status: </label>
+            <ion-badge color="warning">en cours</ion-badge>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header style="width: 90%; text-align: center;">
+            <img src="assets/avatar.png" width="90%; margin-bottom:10px">
+        </ion-card-header>
+        <ion-card-content style="border-radius: 10px; background-color: aliceblue; width: 90%; margin-left:5%; margin-right:5%"><br> Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.</ion-card-content>
+        <ion-card-content>
+            <label style="font-weight: bold;">Date: </label>22 Février 2022<br><br>
+            <label style="font-weight: bold;">Status: </label>
+            <ion-badge color="success">terminé</ion-badge>
+        </ion-card-content>
+    </ion-card>
 
     <!-- fab placed to the (vertical) center and end -->
-    <ion-fab vertical="center" horizontal="end" slot="fixed">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button id="trigger-button">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
@@ -31,55 +78,59 @@
                 </ion-button>
 
                 <ion-card>
-                    <img src="./madison.jpg" />
-                    <ion-card-header>
-                        <ion-card-title>Card Title</ion-card-title>
-                        <ion-list lines="full" class="ion-no-margin">
-                            <ion-list-header lines="full">
-                                <ion-label> Input Types </ion-label>
-                            </ion-list-header>
-
-
-                            <ion-item>
-                                <ion-label position="stacked">Textarea</ion-label>
-                                <ion-textarea placeholder="placeholder"></ion-textarea>
-                            </ion-item>
-
-
-                        </ion-list>
+                    <ion-card-header style="width: 90%; text-align: center;">
+                        <img src="assets/avatar.png" width="90%; margin-bottom:10px">
                     </ion-card-header>
+                    <ion-card-content><br>
+                        <ion-item>
+                            <ion-label position="stacked" style="font-weight: bold;">Description</ion-label>
+                            <ion-textarea placeholder="Écriver votre description ici..."></ion-textarea>
+                        </ion-item>
 
-                    <ion-card-content>
+                        <ion-item>
+                            <ion-label style="font-weight: bold;">Type:</ion-label>
+                            <ion-select value="brown" okText="Okay" cancelText="Dismiss">
+                                <ion-select-option value="brown">Brown</ion-select-option>
+                                <ion-select-option value="blonde">Blonde</ion-select-option>
+                                <ion-select-option value="black">Black</ion-select-option>
+                                <ion-select-option value="red">Red</ion-select-option>
+                            </ion-select>
+                        </ion-item><br>
+
                         <div align="center">
-                            <ion-icon name="camera-outline"></ion-icon>
-                            <ion-button expand="block" fill="clear" shape="round" (click)="selectImage()">
-                                Send
-                            </ion-button>
+                            <div>
+                                <ion-button (click)="getCamera()">
+                                    <ion-icon name="camera-outline"></ion-icon>
+                                </ion-button>
+                                <ion-button (click)="getGalery()">
+                                    <ion-icon name="image-outline"></ion-icon>
+                                </ion-button>
+                                <ion-button>
+                                    Envoyer sans image
+                                </ion-button>
+                            </div>
                         </div>
+
+                        <h3 *ngIf="images.length == 0 " class="ion-padding ion-text-center"> Veuillez sélectionner une image!</h3>
+
+                        <ion-list>
+                            <ion-item *ngFor="let file of images ; let i = index ">
+                                <ion-thumbnail slot="start">
+                                    <ion-img [src]="file.data"></ion-img>
+                                </ion-thumbnail>
+
+                                <ion-button slot="end" fill="clear" (click)="startUpload(file)">
+                                    <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+                                    <ion-label>Envoyer</ion-label>
+                                </ion-button>
+
+                                <ion-button slot="end" fill="clear" (click)="deleteImage(file)">
+                                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                                </ion-button>
+                            </ion-item>
+                        </ion-list>
                     </ion-card-content>
                 </ion-card>
-
-                <h3 *ngIf="images.length == 0 " class="ion-padding ion-text-center"> Please Select Image!</h3>
-
-                <ion-list>
-                    <ion-item *ngFor="let file of images ; let i = index ">
-                        <ion-thumbnail slot="start">
-                            <ion-img [src]="file.data"></ion-img>
-                        </ion-thumbnail>
-
-                        <ion-label class="ion-text-wrap">
-                            {{file.name}}
-                        </ion-label>
-
-                        <ion-button slot="end" fill="clear" (click)="startUpload(file)">
-                            <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
-                        </ion-button>
-
-                        <ion-button slot="end" fill="clear" (click)="deleteImage(file)">
-                            <ion-icon slot="icon-only" name="trash"></ion-icon>
-                        </ion-button>
-                    </ion-item>
-                </ion-list>
 
             </ion-content>
         </ng-template>

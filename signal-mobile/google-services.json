@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "107235098061",
+    "project_id": "pushnotification-6ce14",
+    "storage_bucket": "pushnotification-6ce14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107235098061:android:1992b140f7e3f293cb1884",
+        "android_client_info": {
+          "package_name": "com.signalmobile.cloud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107235098061-8pgduegvhk6pkl04epriddl2dp6htkmb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQD1l-ON8zFz3YQjOBmrXYpHosXI57tEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107235098061-8pgduegvhk6pkl04epriddl2dp6htkmb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
