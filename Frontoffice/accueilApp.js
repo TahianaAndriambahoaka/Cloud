@@ -26,7 +26,6 @@
             $scope.typenames = tab;
         },function errorCallback(response) { if (response.status == 401) { $window.location.href = 'login.html' } });
 
-        var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 });
         $scope.print = function()
         {
             map.remove();
@@ -36,11 +35,12 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
+                    //console.log(response.data);
+                     console.log(response.data);
                      console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsable/' + response.data.id).then(function successCallback(res) 
                     { 
-                        var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 });
-                         $scope.value =  res.data;
+                        var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
                         $scope.gogol = []
                         for(var i = 0 ; i < res.data.length ; i++)

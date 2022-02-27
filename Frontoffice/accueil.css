@@ -1,14 +1,13 @@
 * { box-sizing: border-box; }
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
 
-
-#right { width: 40%}
 body 
 {
   font-family: 'Rubik', sans-serif;
 }
 
-.container {
+.container 
+{
   display:flex;
   height: 90vh;
 }
@@ -28,13 +27,38 @@ body
 
 .result
 {
-  overflow: hidden;
+  height: 100%; 
+  width:50%; 
+  text-align: center; 
+  border:black solid; 
+  overflow: scroll;
   display: grid;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   animation-name: middle;
-  animation-duration: 1s;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+  animation-delay: 1s;
+}
+
+
+#right 
+{ 
+  height: 100%; 
+  width:50%; 
+  text-align: center; 
+  
+  border:black solid; 
+  
+  overflow: hidden;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  
+
+  animation-name: right;
+  animation-duration: 5s;
   animation-fill-mode: both;
   animation-delay: 1s;
 }
@@ -155,6 +179,20 @@ body
 
 
 @keyframes middle {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+
+  100% {
+    opacity: 1;
+    padding: 20px 40px;
+    width: 500px;
+  }
+}
+
+
+@keyframes right {
   0% {
     opacity: 0;
     width: 0;
