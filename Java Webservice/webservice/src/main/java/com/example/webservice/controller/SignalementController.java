@@ -5,11 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-<<<<<<< Updated upstream
 import java.text.SimpleDateFormat;
-=======
 import java.util.Base64;
->>>>>>> Stashed changes
 import java.util.HashMap;
 import java.util.List;
 
