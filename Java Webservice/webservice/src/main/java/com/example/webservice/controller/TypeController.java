@@ -23,7 +23,8 @@ import com.example.webservice.repository.TypeRepository;
 
 @RestController
 @RequestMapping("/v1")
-public class TypeController {
+public class TypeController 
+{
 	@Autowired
     private TypeRepository typeRepository;
 	
@@ -36,10 +37,10 @@ public class TypeController {
 
     // Type par id
  	@GetMapping("/type/{id}")
- 	public ResponseEntity<Type> getTypeById(@PathVariable(value = "id") long idType) throws Exception
+ 	public Type getTypeById(@PathVariable(value = "id") long idType) throws Exception
  	{
  		Type type = typeRepository.findById(idType).orElseThrow(()->new ResourceNotFoundException("Type not found for this id :: " ));
-        return ResponseEntity.ok().body(type);
+        return type;
  	};
 
 	// insert

@@ -3,6 +3,7 @@ package com.example.webservice.controller;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.UUID;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -78,10 +80,103 @@ public class SignalementController
 	}
 
 	@GetMapping("/listByResponsable/{idPersonne}")
-	public List<List<Object>> getListByResponsable(@PathVariable(value = "idPersonne") Long idPersonne) throws Exception 
+	public List<Signalement> getListByResponsable(@PathVariable(value = "idPersonne") Long idPersonne) throws Exception 
 	{
 		return this.signalementRepository.getListByResponsable(idPersonne);
 	}
+
+	@GetMapping("/listByResponsableStatus/{idPersonne}/{status}")
+	public List<Signalement> getListByResponsableStatus(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "status") String status) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableStatus(idPersonne,status);
+	}
+
+	@GetMapping("/listByResponsableDatemax/{idPersonne}/{datemax}")
+	public List<Signalement> getListByResponsableDatemax(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "datemax") String datemax) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableDatemax(idPersonne,new SimpleDateFormat("yyyy-MM-dd").parse(datemax));
+	}
+
+	@GetMapping("/listByResponsableDatemaxStatus/{idPersonne}/{datemax}/{status}")
+	public List<Signalement> getListByResponsableDatemaxStatus(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "datemax") String datemax,@PathVariable(value = "status") String status) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableDatemaxStatus(idPersonne,new SimpleDateFormat("yyyy-MM-dd").parse(datemax),status);
+	}
+
+	@GetMapping("/listByResponsableDateminStatus/{idPersonne}/{datemin}")
+	public List<Signalement> getListByResponsableDatemin(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "datemin")  String datemin) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableDatemin(idPersonne,new SimpleDateFormat("yyyy-MM-dd").parse(datemin));
+	}
+
+	@GetMapping("/listByResponsableDatemin/{idPersonne}/{datemin}/{status}")
+	public List<Signalement> getListByResponsableDatemin(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "datemin")  String datemin,@PathVariable(value = "status") String status) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableDateminStatus(idPersonne,new SimpleDateFormat("yyyy-MM-dd").parse(datemin),status);
+	}
+
+	@GetMapping("/listByResponsableType/{idPersonne}/{type}")
+	public List<Signalement> getListByResponsableType(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "type") String type) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableType(idPersonne,type);
+	}
+
+	@GetMapping("/listByResponsableTypeStatus/{idPersonne}/{type}/{status}")
+	public List<Signalement> getListByResponsableTypeStatus(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "type") String type,@PathVariable(value = "status") String status) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableTypeStatus(idPersonne,type,status);
+	}
+
+	@GetMapping("/listByResponsableTypeDatemax/{idPersonne}/{type}/{datemax}")
+	public List<Signalement> getListByResponsableTypeDatemax(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "type") String type,@PathVariable(value = "datemax") String datemax) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableTypeDatemax(idPersonne,type,new SimpleDateFormat("yyyy-MM-dd").parse(datemax));
+	}
+
+	@GetMapping("/listByResponsableTypeDatemin/{idPersonne}/{type}/{datemin}")
+	public List<Signalement> getListByResponsableTypeDatemin(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "type") String type,@PathVariable(value = "datemin") String datemin) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableTypeDatemin(idPersonne,type,new SimpleDateFormat("yyyy-MM-dd").parse(datemin));
+	}
+
+	@GetMapping("/listByResponsableDateminDatemax/{idPersonne}/{datemin}/{datemax}")
+	public List<Signalement> getListByResponsableDateminDatemax(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "datemin")  String datemin,@PathVariable(value = "datemax")  String datemax) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableDateminDatemax(idPersonne,new SimpleDateFormat("yyyy-MM-dd").parse(datemin),new SimpleDateFormat("yyyy-MM-dd").parse(datemax));
+	}
+
+	@GetMapping("/listByResponsableDateminDatemaxStatus/{idPersonne}/{datemin}/{datemax}/{status}")
+	public List<Signalement> getListByResponsableDateminDatemaxStatus(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "datemin")  String datemin,@PathVariable(value = "datemax")  String datemax,@PathVariable(value = "status") String status) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableDateminDatemaxStatus(idPersonne,new SimpleDateFormat("yyyy-MM-dd").parse(datemin),new SimpleDateFormat("yyyy-MM-dd").parse(datemax),status);
+	}
+
+	
+	@GetMapping("/listByResponsableTypeDatemaxStatus/{idPersonne}/{type}/{datemax}/{status}")
+	public List<Signalement> getListByResponsableTypeDatemaxStatus(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "type") String type,@PathVariable(value = "datemax") String datemax,@PathVariable(value = "status") String status) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableTypeDatemaxStatus(idPersonne,type,new SimpleDateFormat("yyyy-MM-dd").parse(datemax),status);
+	}
+
+	
+	@GetMapping("/listByResponsableTypeDateminStatus/{idPersonne}/{type}/{datemin}/{status}")
+	public List<Signalement> getListByResponsableTypeDateminStatus(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "type") String type,@PathVariable(value = "datemin") String datemin,@PathVariable(value = "status") String status) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableTypeDateminStatus(idPersonne,type,new SimpleDateFormat("yyyy-MM-dd").parse(datemin),status);
+	}
+
+	@GetMapping("/listByResponsableTypeDateminDatemax/{idPersonne}/{type}/{datemin}/{datemax}")
+	public List<Signalement> getListByResponsableTypeDateminDatemax(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "type") String type,@PathVariable(value = "datemin") String datemin,@PathVariable(value = "datemax") String datemax) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableTypeDateminDatemax(idPersonne,type,new SimpleDateFormat("yyyy-MM-dd").parse(datemin),new SimpleDateFormat("yyyy-MM-dd").parse(datemax));
+	}
+
+	@GetMapping("/listByResponsableTypeDateminDatemaxStatus/{idPersonne}/{type}/{datemin}/{datemax}/{stat}")
+	public List<Signalement> getListByResponsableTypeDateminDatemaxStatus(@PathVariable(value = "idPersonne") Long idPersonne,@PathVariable(value = "type") String type,@PathVariable(value = "datemin") String datemin,@PathVariable(value = "datemax") String datemax,@PathVariable(value = "stat") String status) throws Exception 
+	{
+		return this.signalementRepository.getListByResponsableTypeDateminDatemaxStatus(idPersonne,type,new SimpleDateFormat("yyyy-MM-dd").parse(datemin),new SimpleDateFormat("yyyy-MM-dd").parse(datemax),status);
+	}
+
 
 	// Affecter un signalement
 	@PutMapping("/affecterSignalement/{idSignalement}/{idRegion}")

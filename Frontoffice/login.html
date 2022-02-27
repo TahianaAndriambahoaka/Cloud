@@ -3,9 +3,11 @@
   <meta charset="utf-8">
   <title>Signal</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="js/angular.min.js"></script>
+	<script src="js/loginApp.js"></script>
 </head>
 
-<body>
+<body  ng-app="myApp"  ng-controller="main">
   <div class="login-root">
     <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
       <div class="loginbackground box-background--white padding-top--64">
@@ -48,23 +50,25 @@
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--15">Connectez-vous à votre compte</span>
+              <span class="padding-bottom--15"><span>Entrez votre identifiant et mot de passe: {{val}}</span></span>
 			  
-              <form id="stripe-login">
+              <form id="stripe-login" >
                 <div class="field padding-bottom--24">
                   <label for="text">Login</label>
-                  <input type="text" name="text">
+                  <input type="text" name="text" ng-model="email" >
                 </div>
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
                     <label for="password">Mot de passe</label>       
                   </div>
-                  <input type="password" name="password">
+                  <input type="password" name="password" ng-model="password" >
                 </div>
                 <div class="field padding-bottom--24">
-                  <input type="submit" name="submit" value="Se connecter">
+                  <input type="submit" name="submit" value="Se connecter" ng-click="login()">
                 </div>
+                <span>{{message}}</span>
               </form>
+              
             </div>
           </div>
         </div>

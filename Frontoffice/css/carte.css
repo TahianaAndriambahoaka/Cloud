@@ -1,8 +1,9 @@
 * { box-sizing: border-box; }
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
 
-#right {border:1px solid black; width: 100%}
-body {
+#right { width: 100%}
+body 
+{
   font-family: 'Rubik', sans-serif;
 }
 
@@ -12,6 +13,7 @@ body {
 }
 
 .left {
+  border : black solid;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
@@ -133,6 +135,6 @@ body {
   100% {
     opacity: 1;
     padding: 20px 40px;
-    width: 440px;
+    width: 500px;
   }
 }

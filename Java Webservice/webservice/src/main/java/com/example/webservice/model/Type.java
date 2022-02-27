@@ -9,13 +9,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Type")
-public class Type {
+public class Type 
+{
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@Column(name="nom")
 	private String nom;
+
+	@Column(name="couleur")
+	private String couleur;
 
 	public long getId() {
 		return id;
@@ -31,6 +36,14 @@ public class Type {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public String getCouleur() {
+		return couleur;
+	}
+
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
 	}
 	
 }

@@ -112,8 +112,7 @@ public class AuthRestAPIs {
         " it's not an email!");
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(signUpRequest.getEmail(), signUpRequest.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signUpRequest.getEmail(), signUpRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateJwtToken(authentication);
         return ResponseEntity.ok(new JwtResponse(jwt));
@@ -190,8 +189,7 @@ public class AuthRestAPIs {
     }
     else
     {
-        ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!",
-        " it's not an email!");
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), "Signup Failed  !!!"," it's not an email!");
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
         Authentication authentication = authenticationManager.authenticate(

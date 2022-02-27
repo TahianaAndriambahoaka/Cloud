@@ -49,7 +49,8 @@
                 });
         }
 
-        $scope.terminerSignalement = function(id) {
+        $scope.terminerSignalement = function(id) 
+        {
             var conf = confirm("Voulez-vous terminer ce signalement?")
             if (conf) {
                 $http.put('http://localhost:8072/v1/terminerSignalement/' + id).then(function successCallback(response) {

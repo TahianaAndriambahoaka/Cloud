@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webservice.exception.ResourceNotFoundException;
@@ -23,6 +24,13 @@ public class PersonneController
 	public ResponseEntity<Personne> getPersonneById(@PathVariable(value = "id") long id) throws Exception
 	{
 		Personne personne = personneRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Personne non trouvé" ));
+        return ResponseEntity.ok().body(personne);
+	}
+
+	@GetMapping("/personneEmail")
+	public ResponseEntity<Personne> getPersonneByEmail(@RequestParam(name = "email") String email) throws Exception
+	{
+		Personne personne = personneRepository.findByEmail(email).orElseThrow(()->new ResourceNotFoundException("Personne non trouvé" ));
         return ResponseEntity.ok().body(personne);
 	}
 }

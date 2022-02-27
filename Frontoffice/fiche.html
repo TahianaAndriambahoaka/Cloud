@@ -3,33 +3,33 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/fiche.css">
+  <script src="js/angular.min.js"></script>
+		<script src="js/ficheApp.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+ 		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 </head>
-<body>
+<body  ng-app="myApp" ng-controller="main" >
 	<div class="pic-ctn">
-    <img src="https://picsum.photos/200/300?t=1" alt="" class="pic">
-    <img src="https://picsum.photos/200/300?t=2" alt="" class="pic">
-    <img src="https://picsum.photos/200/300?t=3" alt="" class="pic">
-    <img src="https://picsum.photos/200/300?t=4" alt="" class="pic">
-    <img src="https://picsum.photos/200/300?t=5" alt="" class="pic">
+    <img src="{{val[0][8]}}" alt="" class="pic">
   </div>
 
   <div class="main-container">
     <div class="heading">
       <h1 class="heading__title">Description</h1>
-      <p class="heading__credits"><a class="heading__link" target="_blank" href="https://dribbble.com/sl">Design by Simon Lurwer on Dribbble</a></p>
+      <p class="heading__credits"><a class="heading__link" target="_blank" href="https://dribbble.com/sl">{{val[0][4]}}</a></p>
     </div>
     <div class="cards">
       <div class="card card-1">
         <h2 class="card__title">Status</h2>
         <p class="card__apply">
-          <a class="card__link" href="#">En cours <i class="fas fa-arrow-right"></i></a>
+          <a class="card__link" href="#">{{val[0][2]}}<i class="fas fa-arrow-right"></i></a>
         </p>
       </div>
       <div class="card card-2">
         
         <h2 class="card__title">Date</h2>
         <p class="card__apply">
-          <a class="card__link" href="#">22 Dec 2022<i class="fas fa-arrow-right"></i></a>
+          <a class="card__link" href="#">{{val[0][3]}}<i class="fas fa-arrow-right"></i></a>
         </p>
       
       </div>
@@ -38,7 +38,7 @@
         <p class="card__exit"><i class="fas fa-times"></i></p>
         <h2 class="card__title">Type</h2>
         <p class="card__apply">
-          <a class="card__link" href="#">Accident <i class="fas fa-arrow-right"></i></a>
+          <a class="card__link" href="#">{{val[0][1]}}<i class="fas fa-arrow-right"></i></a>
         </p>
       </div>
     </div>
