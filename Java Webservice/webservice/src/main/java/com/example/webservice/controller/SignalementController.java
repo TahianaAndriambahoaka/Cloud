@@ -250,8 +250,8 @@ public class SignalementController
 			// signalement.setPhoto(saveFile(file));
 			try {
 				String sary = encodeFileToBase64Binary(multipartToFile(file, saveFile(file)));
-				System.out.println(sary);
-				// signalement.setPhoto(sary);
+				// System.out.println(sary);
+				signalement.setPhoto(sary);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
