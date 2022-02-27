@@ -35,8 +35,6 @@
                 var tab = result.data;
                 $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
-                    //console.log(response.data);
-                     console.log(response.data);
                      console.log(response.data);
                     $http.get('http://localhost:8072/v1/listByResponsable/' + response.data.id).then(function successCallback(res) 
                     { 
@@ -54,8 +52,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -91,7 +88,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) { this.openPopup();})
                                     .addTo(map);
                                     break;
                                 }
@@ -128,8 +125,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -165,8 +161,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -202,8 +197,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -239,8 +233,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -276,8 +269,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -313,8 +305,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -350,8 +341,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -387,8 +377,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -424,8 +413,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -461,8 +449,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -498,8 +485,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -535,8 +521,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -572,8 +557,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
@@ -609,8 +593,7 @@
                                     temp.couleur = tab[u].couleur;
                                     $scope.gogol.push(temp);
                                     L.marker([res.data[i].latitude,res.data[i].longitude], {icon:L.divIcon({className: "box",iconAnchor: [12,25],labelAnchor: [-6,0],popupAnchor: [0,-15],html: '<span style="background-color:'+ tab[u].couleur +';width: 10px;height: 10px;font-size:15px;display: block; border-radius:5em 5em 5em 5em " ></span>'})})
-                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>')
-                                    .addTo(map);
+                                    .bindPopup('<h1>'+tab[u].nom+'</h1><h3>'+res.data[i].description+'</h3><h2>'+res.data[i].dateHeure+'</h2><a href="fiche.html?id='+res.data[i].id+'">Detail</a>').on('mouseover', function (e) {this.openPopup(); }).addTo(map);
                                     break;
                                 }
                             }
