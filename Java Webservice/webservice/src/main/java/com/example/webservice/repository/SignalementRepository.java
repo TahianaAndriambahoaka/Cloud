@@ -33,6 +33,10 @@ public interface SignalementRepository extends JpaRepository<Signalement, Long>
 
     void save(Optional<Signalement> signalement);
 	
+	// find by idUtilisateur
+	@Query(value="select * from Signalement where idUtilisateur = ?1",nativeQuery= true)
+	List<Signalement> findByIdUtilisateur(Long idUtilisateur);
+	
 	// Recherche avancée BackOffice
 	@Query(value="select * from Signalement where EXTRACT(YEAR FROM dateheure) = ?1 and (EXTRACT(MONTH FROM dateheure) between ?2 and ?3)  and idType = ?4",nativeQuery= true)
 	List<Signalement> rechercherSignalementBackOffice(Integer annee, Integer moisDebut, Integer moisFin, Long idType);

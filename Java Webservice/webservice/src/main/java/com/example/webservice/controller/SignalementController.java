@@ -131,6 +131,13 @@ public class SignalementController
 		return ResponseEntity.ok().body(signalement);
 	}
 
+	// get signalement by idUtilisateur
+	@GetMapping("/signalement")
+	public List<Signalement> getByIdUtilisateur(@RequestParam long idUtilisateur) throws Exception 
+	{
+		return this.signalementRepository.findByIdUtilisateur(idUtilisateur);
+	}
+
 	// insert
 	@PostMapping("/signalement")
 	public Signalement createSignalement(@RequestPart Signalement signalement,@Nullable @RequestPart MultipartFile file) throws Exception 
