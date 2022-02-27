@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webservice.exception.ResourceNotFoundException;
@@ -23,5 +24,13 @@ public class UtilisateurController {
 	{
 		Utilisateur utilisateur = utilisateurRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Utilisateur non trouvé" ));
         return ResponseEntity.ok().body(utilisateur);
+	}
+	
+	// Utilisateur par idPersonne
+	@GetMapping("/utilisateur")
+	public Utilisateur getUtilisateurByIdPersonne(@RequestParam(value = "idPersonne") long idPersonne) throws Exception
+	{
+		Utilisateur utilisateur = utilisateurRepository.findByIdPersonne(idPersonne);
+        return utilisateur;
 	}
 }
