@@ -279,16 +279,16 @@ public class SignalementController
 	private String saveFile(MultipartFile file)
     {
         var filename = UUID.randomUUID().toString()+file.getOriginalFilename();
-        var dest = Paths.get(uploadLocation + "/" + filename);
-        try 
-        {
-            Files.copy(file.getInputStream(),dest);
-        } 
-        catch (IOException e) 
-        {
-            e.printStackTrace();
-            return "Error";
-        }
+        // var dest = Paths.get(uploadLocation + "/" + filename);
+        // try 
+        // {
+        //     Files.copy(file.getInputStream(),dest);
+        // } 
+        // catch (IOException e) 
+        // {
+        //     e.printStackTrace();
+        //     return "Error";
+        // }
         return filename;
     }
 
