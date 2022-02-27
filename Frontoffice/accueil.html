@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title></title>
-		<link rel="stylesheet" type="text/css" href="css/carte.css">
+		<link rel="stylesheet" type="text/css" href="accueil.css">
 		<meta charset="utf-8">
 		<style type="text/css"> #map { height: 50vh; } </style>
 		<script src="js/angular.min.js"></script>
@@ -13,9 +13,9 @@
  		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 		<style> #map { height: 100px; } </style>
 	</head>
-	<body ng-app="myApp" ng-controller="main" >
+	<body ng-app="myApp" ng-controller="main" style="background-color:black;">
 			<div class="header">
-				<nav class="navbar navbar-dark bg-primary">
+				<nav class="navbar navbar-dark ">
 					<div class="container-fluid">
 						<a class="navbar-brand"><h1>Signalement</h1></a>
 					  </div>
@@ -74,7 +74,7 @@
 					
 				</div>
 				<div id="right">
-					<div id="map" style="height: 100%; width:100%"></div>
+					<div id="map" "></div>
 				</div>
 			</div>
 
