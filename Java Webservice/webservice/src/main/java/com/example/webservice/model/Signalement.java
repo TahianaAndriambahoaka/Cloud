@@ -41,7 +41,7 @@ public class Signalement
 	@Column(name="idutilisateur")
 	private long idUtilisateur;
 
-	@Column(name="photo")
+	@Column(name="photo", columnDefinition="text", length=10485760)
 	private String photo;
 
 /*

@@ -1,9 +1,12 @@
 package com.example.webservice.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 
@@ -244,7 +247,14 @@ public class SignalementController
 	{
 		if(file!=null)
 		{
-			signalement.setPhoto(saveFile(file));
+			// signalement.setPhoto(saveFile(file));
+			try {
+				String sary = encodeFileToBase64Binary(multipartToFile(file, saveFile(file)));
+				// System.out.println(sary);
+				signalement.setPhoto(sary);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		else 
 		{
@@ -254,19 +264,31 @@ public class SignalementController
 		return this.signalementRepository.save(signalement);
 	}
 
+	private static String encodeFileToBase64Binary(File file) throws Exception {
+        FileInputStream f = new FileInputStream(file);
+        byte[] bytes = new byte[(int) file.length()];
+        f.read(bytes);
+        return Base64.getEncoder().encodeToString(bytes);
+    }
+	public  static File multipartToFile(MultipartFile multipart, String fileName) throws IllegalStateException, IOException {
+		File convFile = new File(System.getProperty("java.io.tmpdir")+"/"+fileName);
+		multipart.transferTo(convFile);
+		return convFile;
+	}
+
 	private String saveFile(MultipartFile file)
     {
         var filename = UUID.randomUUID().toString()+file.getOriginalFilename();
-        var dest = Paths.get(uploadLocation + "/" + filename);
-        try 
-        {
-            Files.copy(file.getInputStream(),dest);
-        } 
-        catch (IOException e) 
-        {
-            e.printStackTrace();
-            return "Error";
-        }
+        // var dest = Paths.get(uploadLocation + "/" + filename);
+        // try 
+        // {
+        //     Files.copy(file.getInputStream(),dest);
+        // } 
+        // catch (IOException e) 
+        // {
+        //     e.printStackTrace();
+        //     return "Error";
+        // }
         return filename;
     }
 
