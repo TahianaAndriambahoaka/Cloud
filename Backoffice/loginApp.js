@@ -4,7 +4,7 @@
     {
         $scope.login = function()
         {
-            $http.post('http://localhost:8072/v1/auth/signin',{email:$scope.email,password:$scope.password}).then(function successCallback(response) 
+            $http.post('https://heroku-ws-cloud.herokuapp.com/v1/auth/signin',{email:$scope.email,password:$scope.password}).then(function successCallback(response) 
             {
                 $window.localStorage['jwtToken'] = response.data.accessToken;
 

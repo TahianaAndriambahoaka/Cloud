@@ -29,7 +29,7 @@
    
     $scope.getListNewSignalement = function(id)
     {
-      $http.get('http://localhost:8072/v1/listNewSignalement').then(function successCallback(response) 
+      $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listNewSignalement').then(function successCallback(response) 
       {
         console.log(response.data);
         $scope.listNewSignalement = response.data;

@@ -5,13 +5,13 @@
     <title>Statistique</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/affectation.css">
-    <script src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="affectation.css">
+    <script src="jquery.min.js"></script>
+    <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-    <script type="text/javascript" src="js/angular-fusioncharts.js"></script>
-    <script type="text/javascript" src="js/fusioncharts.theme.fusion.js"></script>
+    <script type="text/javascript" src="angular-fusioncharts.js"></script>
+    <script type="text/javascript" src="fusioncharts.theme.fusion.js"></script>
 
 </head>
 
@@ -102,11 +102,11 @@
                         myApp.factory('authInterceptor', authInterceptor).config(function($httpProvider) { $httpProvider.interceptors.push('authInterceptor');})
                         myApp.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
 
-                            $http.get("http://localhost:8072/types").then(function(response) {
+                            $http.get("https://heroku-ws-cloud.herokuapp.com/v1/types").then(function(response) {
                                 $scope.types = response.data;
                             });
 
-                            $http.get("http://localhost:8072/rechercherSignalement/getNbSignalementParType").then(function(response) {
+                            $http.get("https://heroku-ws-cloud.herokuapp.com/v1/rechercherSignalement/getNbSignalementParType").then(function(response) {
                                 $scope.signalementParType = response.data;
                             });
 
@@ -135,7 +135,7 @@
                                 if (idType != "" && annee == "" && moisMin == "" && moisMax == "") {
                                     var data = [];
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open('GET', "http://localhost:8072/rechercherSignalement/idType=" + idType);
+                                    xhr.open('GET', "https://heroku-ws-cloud.herokuapp.com/v1/rechercherSignalement/idType=" + idType);
                                     xhr.onreadystatechange = function() {
                                         if (xhr.readyState === 4) {
                                             var t = [];
@@ -236,7 +236,7 @@
                                 } else if (idType != "" && annee != "" && moisMin == "" && moisMax == "") {
                                     var data = [];
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open('GET', "http://localhost:8072/rechercherSignalement/annee=" + annee + "/idType=" + idType);
+                                    xhr.open('GET', "https://heroku-ws-cloud.herokuapp.com/v1/rechercherSignalement/annee=" + annee + "/idType=" + idType);
                                     xhr.onreadystatechange = function() {
                                         if (xhr.readyState === 4) {
                                             var t = [];
@@ -337,7 +337,7 @@
                                 } else if (idType != "" && moisMin != "" && moisMax != "" && annee == "") {
                                     var data = [];
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open('GET', "http://localhost:8072/rechercherSignalement/idType=" + idType + "/moisDebut=" + moisMin + "/moisFin=" + moisMax);
+                                    xhr.open('GET', "https://heroku-ws-cloud.herokuapp.com/v1/rechercherSignalement/idType=" + idType + "/moisDebut=" + moisMin + "/moisFin=" + moisMax);
                                     xhr.onreadystatechange = function() {
                                         if (xhr.readyState === 4) {
                                             var t = [];
@@ -438,7 +438,7 @@
                                 } else if (annee != "" && idType == "" && moisMin == "" && moisMax == "") {
                                     var data = [];
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open('GET', "http://localhost:8072/rechercherSignalement/annee=" + annee);
+                                    xhr.open('GET', "https://heroku-ws-cloud.herokuapp.com/v1/rechercherSignalement/annee=" + annee);
                                     xhr.onreadystatechange = function() {
                                         if (xhr.readyState === 4) {
                                             var t = [];
@@ -539,7 +539,7 @@
                                 } else if (annee != "" && moisMin != "" && moisMax != "" && idType == "") {
                                     var data = [];
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open('GET', "http://localhost:8072/rechercherSignalement/annee=" + annee + "/moisDebut=" + moisMin + "/moisFin=" + moisMax);
+                                    xhr.open('GET', "https://heroku-ws-cloud.herokuapp.com/v1/rechercherSignalement/annee=" + annee + "/moisDebut=" + moisMin + "/moisFin=" + moisMax);
                                     xhr.onreadystatechange = function() {
                                         if (xhr.readyState === 4) {
                                             var t = [];
@@ -640,7 +640,7 @@
                                 } else if (moisMin != "" && moisMax != "" && annee == "" && idType == "") {
                                     var data = [];
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open('GET', "http://localhost:8072/rechercherSignalement/moisDebut=" + moisMin + "/moisFin=" + moisMax);
+                                    xhr.open('GET', "https://heroku-ws-cloud.herokuapp.com/v1/rechercherSignalement/moisDebut=" + moisMin + "/moisFin=" + moisMax);
                                     xhr.onreadystatechange = function() {
                                         if (xhr.readyState === 4) {
                                             var t = [];
@@ -743,7 +743,7 @@
                                 {
                                     var data = [];
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open('GET', 'http://localhost:8072/signalements');
+                                    xhr.open('GET', 'https://heroku-ws-cloud.herokuapp.com/v1/signalements');
                                     xhr.setRequestHeader('Authorization', 'Bearer '+ window.localStorage['jwtToken']);
                                     xhr.onreadystatechange = function() {
                                         if (xhr.readyState === 4) {

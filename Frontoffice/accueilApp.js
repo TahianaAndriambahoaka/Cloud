@@ -16,7 +16,7 @@
 
     function myCtrl($window,$scope,$http,$filter) 
     {
-        $http.get('http://localhost:8072/v1/types').then(function successCallback(resultat) 
+        $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(resultat) 
         {
             var tab = [];
             for(var i = 0 ; i < resultat.data.length ; i++)
@@ -30,13 +30,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsable/' + response.data.id).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsable/' + response.data.id).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -66,13 +66,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableStatus/' + response.data.id + '/'+status).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableStatus/' + response.data.id + '/'+status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -103,13 +103,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableDatemax/' + response.data.id + '/' + datemax).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableDatemax/' + response.data.id + '/' + datemax).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -139,13 +139,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableDatemin/' + response.data.id + '/' + datemin).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableDatemin/' + response.data.id + '/' + datemin).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -175,13 +175,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableType/' + response.data.id + '/' + type).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableType/' + response.data.id + '/' + type).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -211,13 +211,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableDatemaxStatus/' + response.data.id + '/' + datemax + '/' + status).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableDatemaxStatus/' + response.data.id + '/' + datemax + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -247,13 +247,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableDateminStatus/' + response.data.id + '/' + datemin + '/' + status).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableDateminStatus/' + response.data.id + '/' + datemin + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -283,13 +283,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableTypeStatus/' + response.data.id +'/'+ type + '/' + status).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableTypeStatus/' + response.data.id +'/'+ type + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -319,13 +319,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableTypeDatemax/' + response.data.id + '/' + type + '/' + datemax).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableTypeDatemax/' + response.data.id + '/' + type + '/' + datemax).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -355,13 +355,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableDateminDatemax/' + response.data.id + '/' + datemin + '/' + datemax ).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableDateminDatemax/' + response.data.id + '/' + datemin + '/' + datemax ).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -391,13 +391,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableTypeDatemin/' + response.data.id + '/'+ type +'/'+datemin).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableTypeDatemin/' + response.data.id + '/'+ type +'/'+datemin).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -427,13 +427,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableDateminDatemaxStatus/' + response.data.id + '/' + datemin + '/' + datemax + '/' + status).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableDateminDatemaxStatus/' + response.data.id + '/' + datemin + '/' + datemax + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -463,13 +463,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableTypeDatemaxStatus/' + response.data.id +'/'+type + '/' + datemax + '/' + status).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableTypeDatemaxStatus/' + response.data.id +'/'+type + '/' + datemax + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -499,13 +499,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableTypeDateminStatus/' + response.data.id + '/' + type + '/' + datemin + '/' + status).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableTypeDateminStatus/' + response.data.id + '/' + type + '/' + datemin + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -535,13 +535,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableTypeDateminDatemax/' + response.data.id + '/' + type + '/' + datemin + '/' + datemax).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableTypeDateminDatemax/' + response.data.id + '/' + type + '/' + datemin + '/' + datemax).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
@@ -571,13 +571,13 @@
         {
             map.remove();
             document.getElementById('right').innerHTML = "<div id='map' style='width: 100%; height: 100%;'></div>";
-            $http.get('http://localhost:8072/v1/types').then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/types').then(function successCallback(result) 
             {
                 var tab = result.data;
-                $http.get('http://localhost:8072/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personneEmail?email=' + JSON.parse($window.atob($window.localStorage['jwtToken'].split('.')[1].replace('-', '+').replace('_', '/'))).sub).then(function successCallback(response) 
                 {
                      console.log(response.data);
-                    $http.get('http://localhost:8072/v1/listByResponsableTypeDateminDatemaxStatus/' + response.data.id + '/' + type + '/' + datemin + '/' + datemax + '/' + status).then(function successCallback(res) 
+                    $http.get('https://heroku-ws-cloud.herokuapp.com/v1/listByResponsableTypeDateminDatemaxStatus/' + response.data.id + '/' + type + '/' + datemin + '/' + datemax + '/' + status).then(function successCallback(res) 
                     { 
                         var map = L.map('map',{ center: [-18.777192,46.854328],zoom: 5 }); $scope.value =  res.data;
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: 'Signalement' }).addTo(map);
