@@ -102,6 +102,7 @@ public class AuthRestAPIs {
                 } else {
                     Personne user = new Personne(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()),
                             signUpRequest.getNom(), signUpRequest.getPrenom());
+                    user.setDdn(signUpRequest.getDdn());
                     Personne p = personneRepository.save(user);
                     Utilisateur u = new Utilisateur(p.getId());
                     utilisateurRepository.save(u);

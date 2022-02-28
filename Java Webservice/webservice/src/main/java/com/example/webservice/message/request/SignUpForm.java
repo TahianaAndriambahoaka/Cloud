@@ -1,5 +1,7 @@
 package com.example.webservice.message.request;
 
+import java.sql.Date;
+
 public class SignUpForm 
 {
 
@@ -11,9 +13,19 @@ public class SignUpForm
 
     private String prenom;
 
+    private Date ddn;
+
 
     public String getEmail() {
         return email;
+    }
+
+    public Date getDdn() {
+        return ddn;
+    }
+
+    public void setDdn(Date ddn) {
+        this.ddn = ddn;
     }
 
     public void setEmail(String email) 
