@@ -20,13 +20,13 @@
         var url = new URL(str);
         var id = url.searchParams.get("id");
         console.log(id);
-        $http.get('http://localhost:8072/v1/signalement/'+id).then(function successCallback(res) 
+        $http.get('https://heroku-ws-cloud.herokuapp.com/v1/signalement/'+id).then(function successCallback(res) 
         { 
             //console.log(res.data); 
             $scope.val = res.data;       
-            $http.get('http://localhost:8072/v1/utilisateur/'+res.data[0][5]).then(function successCallback(result) 
+            $http.get('https://heroku-ws-cloud.herokuapp.com/v1/utilisateur/'+res.data[0][5]).then(function successCallback(result) 
             {  
-                $http.get('http://localhost:8072/v1/personne/'+result.data.idPersonne).then(function successCallback(resultat) 
+                $http.get('https://heroku-ws-cloud.herokuapp.com/v1/personne/'+result.data.idPersonne).then(function successCallback(resultat) 
                 {  
                     console.log(resultat.data);
                     $scope.user = resultat.data;         
